@@ -1,0 +1,2162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support – Lystro</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #ffffff;
+      --surface: #f5f5f7;
+      --border: #e0e0e0;
+      --text: #1d1d1f;
+      --text-secondary: #6e6e73;
+      --accent: #007aff;
+      --max-width: 740px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1c1c1e;
+        --surface: #2c2c2e;
+        --border: #3a3a3c;
+        --text: #f5f5f7;
+        --text-secondary: #98989d;
+        --accent: #0a84ff;
+      }
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 48px 24px 80px;
+    }
+
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+    }
+
+    /* ── Language selector ── */
+    .lang-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .lang-bar label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      white-space: nowrap;
+    }
+
+    .lang-bar select {
+      font-family: inherit;
+      font-size: 14px;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 6px 10px;
+      cursor: pointer;
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%236e6e73' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 10px center;
+      padding-right: 28px;
+    }
+
+    .lang-bar select:focus {
+      border-color: var(--accent);
+    }
+
+    /* ── Header ── */
+    header { margin-bottom: 48px; }
+
+    .app-name {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 12px;
+    }
+
+    .meta {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    /* ── Intro ── */
+    .intro {
+      background: var(--surface);
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 48px;
+      font-size: 15px;
+      color: var(--text-secondary);
+    }
+
+    /* ── Contact card ── */
+    .contact-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      background: var(--surface);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 48px;
+    }
+
+    .contact-icon {
+      font-size: 32px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .contact-body h2 {
+      font-size: 17px;
+      font-weight: 600;
+      margin-bottom: 6px;
+      border: none;
+      padding: 0;
+    }
+
+    .contact-body p {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    .contact-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-link {
+      display: inline-block;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .contact-link:hover { text-decoration: underline; }
+
+    /* ── Sections ── */
+    section { margin-bottom: 40px; }
+
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    #sections p {
+      font-size: 15px;
+      color: var(--text-secondary);
+      margin-bottom: 12px;
+    }
+
+    #sections p:last-child { margin-bottom: 0; }
+
+    #sections ul {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0;
+    }
+
+    #sections ul li {
+      font-size: 15px;
+      color: var(--text-secondary);
+      padding: 5px 0 5px 22px;
+      position: relative;
+    }
+
+    #sections ul li::before {
+      content: "•";
+      position: absolute;
+      left: 6px;
+      color: var(--accent);
+    }
+
+    #sections a { color: var(--accent); text-decoration: none; }
+    #sections a:hover { text-decoration: underline; }
+
+    /* ── FAQ ── */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .faq-item {
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      background: var(--surface);
+      border: none;
+      padding: 16px 20px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--text);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      transition: background 0.15s;
+    }
+
+    .faq-question:hover { background: var(--border); }
+
+    .faq-chevron {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      color: var(--text-secondary);
+      transition: transform 0.2s;
+    }
+
+    .faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      display: none;
+      background: var(--surface);
+      padding: 0 20px 16px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .faq-answer p { margin-bottom: 10px; }
+    .faq-answer p:last-child { margin-bottom: 0; }
+    .faq-answer ul {
+      list-style: none;
+      padding: 0;
+      margin: 8px 0;
+    }
+    .faq-answer ul li {
+      padding: 4px 0 4px 20px;
+      position: relative;
+    }
+    .faq-answer ul li::before {
+      content: "•";
+      position: absolute;
+      left: 5px;
+      color: var(--accent);
+    }
+    .faq-answer a { color: var(--accent); text-decoration: none; }
+    .faq-answer a:hover { text-decoration: underline; }
+
+    .faq-item.open .faq-answer { display: block; }
+
+    /* ── Footer ── */
+    footer {
+      margin-top: 64px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <div class="lang-bar">
+    <label for="lang-select" id="lang-label">Language</label>
+    <select id="lang-select"></select>
+  </div>
+
+  <header>
+    <div class="app-name" id="app-name"></div>
+    <h1 id="page-title"></h1>
+    <p class="meta" id="page-subtitle"></p>
+  </header>
+
+  <div class="intro" id="page-intro"></div>
+
+  <div id="sections"></div>
+
+  <div id="contact-card-container"></div>
+
+  <footer id="page-footer"></footer>
+
+</div>
+
+<script>
+// ─────────────────────────────────────────────────────────────────────────────
+// CONFIG
+// ─────────────────────────────────────────────────────────────────────────────
+const CONTACT_EMAIL = "apps.tm18@gmail.com";
+const PRIVACY_POLICY_URL = "privacy-policy.html";
+const CURRENT_YEAR = new Date().getFullYear();
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TRANSLATIONS
+// To add a new language: add an entry to langNames and a matching key here,
+// following the same shape as "en".
+// ─────────────────────────────────────────────────────────────────────────────
+const translations = {
+
+  cs: {
+    langLabel: "Jazyk",
+    appName: "Lystro - Jednoduché Seznamy",
+    title: "Podpora",
+    subtitle: "Lystro - Jednoduché Seznamy",
+    intro: "Jsme zde, abychom vám pomohli. Prohlédněte si níže uvedené nejčastější dotazy nebo nás kontaktujte přímo — snažíme se odpovídat do 48 hodin.",
+    contact: {
+      icon: "✉️",
+      heading: "Kontaktujte nás",
+      body: "Máte otázku, na kterou níže nenajdete odpověď, narazili jste na chybu nebo chcete sdílet zpětnou vazbu? Napište nám e-mail a odpovíme co nejdříve.",
+      responseTime: "Typická doba odpovědi: do 48 hodin.",
+      linkLabel: CONTACT_EMAIL,
+    },
+    sections: [
+      {
+        heading: "Nejčastější dotazy",
+        faq: [
+          {
+            q: "Jak obnovit nákup Odebrat reklamy?",
+            a: `<p>Otevřete aplikaci a přejděte na <strong>O aplikaci</strong> (ikona nastavení na hlavní obrazovce). Klepněte na <strong>Obnovit nákupy</strong>. Nákup bude ověřen přes App Store nebo Google Play a reklamy budou automaticky odstraněny.</p>
+                <p>Ujistěte se, že jste přihlášeni ke stejnému Apple ID (iOS) nebo Google účtu (Android), které bylo použito při původním nákupu.</p>`
+          },
+          {
+            q: "Oznámení nefungují — co mám dělat?",
+            a: `<p>Zkontrolujte následující:</p>
+                <ul>
+                  <li>Přejděte do <strong>Nastavení → Oznámení → Lystro</strong> a ujistěte se, že jsou oznámení povolena.</li>
+                  <li>Ujistěte se, že nastavený čas připomínky je v budoucnosti.</li>
+                  <li>Pokud jste nedávno aplikaci přeinstalovali, otevřete ji jednou pro opětovnou registraci oprávnění k oznámením.</li>
+                </ul>`
+          },
+          {
+            q: "Jak změnit jazyk aplikace?",
+            a: `<p>Otevřete <strong>Nastavení</strong> (klepněte na ikonu ozubeného kola na hlavní obrazovce) a přejděte dolů do sekce <strong>Jazyk</strong>. Vyberte preferovaný jazyk — aplikace se automaticky restartuje a změna se použije.</p>
+                <p>Lystro podporuje 33 jazyků.</p>`
+          },
+          {
+            q: "Kde jsou moje data uložena? Jsou zálohována?",
+            a: `<p>Všechny vaše nákupní seznamy, položky, poznámky a fotografie jsou uloženy lokálně v zařízení. Žádná data nejsou odesílána na server — nejsou žádné účty ani synchronizace s cloudem.</p>
+                <p>Vaše data jsou zahrnuta ve standardní záloze iCloud nebo iTunes (pokud je povolena). Na Androidu jsou data zahrnuta v záloze Google (pokud je povolena). Pokud obnovíte zařízení ze zálohy, data Lystro budou obnovena spolu s nimi.</p>`
+          },
+          {
+            q: "Jak odstranit všechna svá data?",
+            a: `<p>Jednotlivé seznamy nebo položky můžete smazat přímo v aplikaci. Chcete-li odstranit veškerá data, odinstalujte Lystro ze zařízení — tím se trvale odstraní všechny lokálně uložené seznamy, položky, fotografie a nastavení.</p>`
+          },
+          {
+            q: "Aplikace padá nebo se chová neočekávaně — co mám dělat?",
+            a: `<p>Zkuste následující kroky:</p>
+                <ul>
+                  <li>Vynuceně zavřete aplikaci a znovu ji otevřete.</li>
+                  <li>Ujistěte se, že máte nainstalovanou nejnovější verzi Lystro z App Store (iOS) nebo Google Play (Android).</li>
+                  <li>Restartujte zařízení.</li>
+                </ul>
+                <p>Pokud problém přetrvává, <a href="mailto:${CONTACT_EMAIL}">kontaktujte nás</a> s popisem toho, co se stalo, a informacemi o zařízení a verzi operačního systému. Prošetříme to co nejdříve.</p>`
+          },
+        ]
+      },
+      {
+        heading: "Ochrana soukromí",
+        content: `<p>Lystro je navrženo s ohledem na vaše soukromí. Vaše seznamy a fotografie nikdy neopouštějí zařízení. Podrobnosti najdete v našich <a href="${PRIVACY_POLICY_URL}">Zásadách ochrany osobních údajů</a>.</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. Všechna práva vyhrazena.`
+  },
+
+  da: {
+    langLabel: "Sprog",
+    appName: "Lystro - Nemme Indkøbslister",
+    title: "Support",
+    subtitle: "Lystro - Nemme Indkøbslister",
+    intro: "Vi er her for at hjælpe. Se de hyppigt stillede spørgsmål nedenfor, eller kontakt os direkte — vi bestræber os på at svare inden for 48 timer.",
+    contact: {
+      icon: "✉️",
+      heading: "Kontakt os",
+      body: "Har du et spørgsmål, der ikke er besvaret nedenfor, fundet en fejl eller vil du dele feedback? Send os en e-mail, og vi vender tilbage hurtigst muligt.",
+      responseTime: "Typisk svartid: inden for 48 timer.",
+      linkLabel: CONTACT_EMAIL,
+    },
+    sections: [
+      {
+        heading: "Ofte stillede spørgsmål",
+        faq: [
+          {
+            q: "Hvordan gendanner jeg mit Fjern annoncer-køb?",
+            a: `<p>Åbn appen og gå til <strong>Om</strong> (indstillingsikonet på startskærmen). Tryk på <strong>Gendan køb</strong>. Dit køb bekræftes med App Store eller Google Play og annoncerne fjernes automatisk.</p>
+                <p>Sørg for at du er logget ind på det samme Apple ID (iOS) eller Google-konto (Android), der blev brugt ved det oprindelige køb.</p>`
+          },
+          {
+            q: "Notifikationer virker ikke — hvad skal jeg gøre?",
+            a: `<p>Tjek følgende:</p>
+                <ul>
+                  <li>Gå til <strong>Indstillinger → Notifikationer → Lystro</strong> og sørg for, at notifikationer er tilladt.</li>
+                  <li>Sørg for, at påmindelsestidspunktet du har indstillet, er i fremtiden.</li>
+                  <li>Hvis du for nylig har geninstalleret appen, skal du åbne den én gang for at genregistrere notifikationstilladelser.</li>
+                </ul>`
+          },
+          {
+            q: "Hvordan ændrer jeg appens sprog?",
+            a: `<p>Åbn <strong>Indstillinger</strong> (tryk på tandhjulsikonet på startskærmen) og rul ned til afsnittet <strong>Sprog</strong>. Vælg dit foretrukne sprog — appen genstarter automatisk for at anvende ændringen.</p>
+                <p>Lystro understøtter 33 sprog.</p>`
+          },
+          {
+            q: "Hvor gemmes mine data? Tages der backup?",
+            a: `<p>Alle dine indkøbslister, varer, noter og fotos gemmes lokalt på din enhed. Der sendes aldrig data til en server — der er ingen konti og ingen skysynkronisering.</p>
+                <p>Dine data er inkluderet i din enheds standard iCloud- eller iTunes-backup (hvis aktiveret). På Android er det inkluderet i din Google backup (hvis aktiveret). Hvis du gendanner din enhed fra en backup, gendannes dine Lystro-data med.</p>`
+          },
+          {
+            q: "Hvordan sletter jeg alle mine data?",
+            a: `<p>Du kan slette individuelle lister eller varer fra appen. For at fjerne alle data helt skal du afinstallere Lystro fra din enhed — dette sletter permanent alle lokalt gemte lister, varer, fotos og indstillinger.</p>`
+          },
+          {
+            q: "Appen crasher eller opfører sig uventet — hvad skal jeg gøre?",
+            a: `<p>Prøv følgende trin:</p>
+                <ul>
+                  <li>Tving appen til at lukke og åbn den igen.</li>
+                  <li>Sørg for at du kører den nyeste version af Lystro fra App Store (iOS) eller Google Play (Android).</li>
+                  <li>Genstart din enhed.</li>
+                </ul>
+                <p>Hvis problemet fortsætter, bedes du <a href="mailto:${CONTACT_EMAIL}">kontakte os</a> med en beskrivelse af, hvad der skete, samt hvilken enhed og OS-version du bruger. Vi undersøger det hurtigst muligt.</p>`
+          },
+        ]
+      },
+      {
+        heading: "Privatliv",
+        content: `<p>Lystro er designet med dit privatliv i tankerne. Dine lister og fotos forlader aldrig din enhed. Se vores <a href="${PRIVACY_POLICY_URL}">Privatlivspolitik</a> for alle detaljer.</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. Alle rettigheder forbeholdes.`
+  },
+
+  de: {
+    langLabel: "Sprache",
+    appName: "Lystro - Einkaufslisten",
+    title: "Support",
+    subtitle: "Lystro - Einkaufslisten",
+    intro: "Wir sind hier, um zu helfen. Sieh dir die häufig gestellten Fragen unten an oder kontaktiere uns direkt — wir bemühen uns, innerhalb von 48 Stunden zu antworten.",
+    contact: {
+      icon: "✉️",
+      heading: "Kontakt aufnehmen",
+      body: "Hast du eine Frage, die unten nicht beantwortet wird, einen Fehler gefunden oder möchtest Feedback teilen? Schreib uns eine E-Mail und wir melden uns so schnell wie möglich.",
+      responseTime: "Typische Antwortzeit: innerhalb von 48 Stunden.",
+      linkLabel: CONTACT_EMAIL,
+    },
+    sections: [
+      {
+        heading: "Häufig gestellte Fragen",
+        faq: [
+          {
+            q: "Wie stelle ich meinen Kauf von Werbung entfernen wieder her?",
+            a: `<p>Öffne die App und gehe zu <strong>Über</strong> (Einstellungssymbol auf dem Hauptbildschirm). Tippe auf <strong>Käufe wiederherstellen</strong>. Der Kauf wird über den App Store oder Google Play verifiziert und Werbung wird automatisch entfernt.</p>
+                <p>Stelle sicher, dass du mit der gleichen Apple ID (iOS) oder dem Google-Konto (Android) angemeldet bist, das beim ursprünglichen Kauf verwendet wurde.</p>`
+          },
+          {
+            q: "Benachrichtigungen funktionieren nicht — was soll ich tun?",
+            a: `<p>Überprüfe Folgendes:</p>
+                <ul>
+                  <li>Gehe zu <strong>Einstellungen → Mitteilungen → Lystro</strong> und stelle sicher, dass Benachrichtigungen erlaubt sind.</li>
+                  <li>Stelle sicher, dass die eingestellte Erinnerungszeit in der Zukunft liegt.</li>
+                  <li>Wenn du die App kürzlich neu installiert hast, öffne sie einmal, um die Benachrichtigungsberechtigungen neu zu registrieren.</li>
+                </ul>`
+          },
+          {
+            q: "Wie ändere ich die Sprache der App?",
+            a: `<p>Öffne die <strong>Einstellungen</strong> (tippe auf das Zahnrad-Symbol auf dem Hauptbildschirm) und scrolle nach unten zum Abschnitt <strong>Sprache</strong>. Wähle deine bevorzugte Sprache — die App startet automatisch neu, um die Änderung zu übernehmen.</p>
+                <p>Lystro unterstützt 33 Sprachen.</p>`
+          },
+          {
+            q: "Wo werden meine Daten gespeichert? Gibt es Backups?",
+            a: `<p>Alle deine Einkaufslisten, Artikel, Notizen und Fotos werden lokal auf deinem Gerät gespeichert. Es werden niemals Daten an einen Server gesendet — keine Konten, keine Cloud-Synchronisierung.</p>
+                <p>Deine Daten sind in der standardmäßigen iCloud- oder iTunes-Sicherung deines Geräts enthalten (wenn aktiviert). Auf Android ist es in der Google-Sicherung enthalten (wenn aktiviert). Wenn du dein Gerät aus einer Sicherung wiederherstellst, werden deine Lystro-Daten mitwiederhergestellt.</p>`
+          },
+          {
+            q: "Wie lösche ich alle meine Daten?",
+            a: `<p>Du kannst einzelne Listen oder Artikel in der App löschen. Um alle Daten vollständig zu entfernen, deinstalliere Lystro von deinem Gerät — damit werden alle lokal gespeicherten Listen, Artikel, Fotos und Einstellungen dauerhaft gelöscht.</p>`
+          },
+          {
+            q: "Die App stürzt ab oder verhält sich unerwartet — was soll ich tun?",
+            a: `<p>Versuche folgende Schritte:</p>
+                <ul>
+                  <li>Schließe die App erzwungen und öffne sie erneut.</li>
+                  <li>Stelle sicher, dass du die neueste Version von Lystro aus dem App Store (iOS) oder Google Play (Android) verwendest.</li>
+                  <li>Starte dein Gerät neu.</li>
+                </ul>
+                <p>Wenn das Problem weiterhin besteht, <a href="mailto:${CONTACT_EMAIL}">kontaktiere uns</a> mit einer Beschreibung des Problems sowie Angabe deines Geräts und der OS-Version. Wir untersuchen es so schnell wie möglich.</p>`
+          },
+        ]
+      },
+      {
+        heading: "Datenschutz",
+        content: `<p>Lystro wurde mit Blick auf deine Privatsphäre entwickelt. Deine Listen und Fotos verlassen niemals dein Gerät. Alle Details findest du in unserer <a href="${PRIVACY_POLICY_URL}">Datenschutzerklärung</a>.</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. Alle Rechte vorbehalten.`
+  },
+
+  en: {
+    langLabel: "Language",
+    appName: "Lystro - Easy Shopping Lists",
+    title: "Support",
+    subtitle: "Lystro – Easy Shopping Lists",
+    intro: "We're here to help. Browse the frequently asked questions below or reach out directly — we aim to respond within 48 hours.",
+    contact: {
+      icon: "✉️",
+      heading: "Contact Us",
+      body: "Have a question that isn't answered below, found a bug, or want to share feedback? Send us an email and we'll get back to you as soon as possible.",
+      responseTime: "Typical response time: within 48 hours.",
+      linkLabel: CONTACT_EMAIL,
+    },
+    sections: [
+      {
+        heading: "Frequently Asked Questions",
+        faq: [
+          {
+            q: "How do I restore my Remove Ads purchase?",
+            a: `<p>Open the app and go to <strong>About</strong> (accessible from the settings icon on the main screen). Tap <strong>Restore Purchases</strong>. Your purchase will be verified with the App Store or Google Play and ads will be removed automatically.</p>
+                <p>Make sure you are signed in to the same Apple ID (iOS) or Google account (Android) that was used when the purchase was originally made.</p>`
+          },
+          {
+            q: "Notifications aren't working — what should I do?",
+            a: `<p>Check the following:</p>
+                <ul>
+                  <li>Go to your device's <strong>Settings → Notifications → Lystro</strong> and make sure notifications are allowed.</li>
+                  <li>Make sure the reminder time you set is in the future.</li>
+                  <li>If you recently reinstalled the app, open it once to re-register notification permissions.</li>
+                </ul>`
+          },
+          {
+            q: "How do I change the app language?",
+            a: `<p>Open <strong>Settings</strong> (tap the gear icon on the main screen) and scroll down to the <strong>Language</strong> section. Select your preferred language — the app will restart automatically to apply the change.</p>
+                <p>Lystro supports 33 languages.</p>`
+          },
+          {
+            q: "Where is my data stored? Is it backed up?",
+            a: `<p>All your shopping lists, items, notes, and photos are stored locally on your device. No data is ever sent to a server — there are no accounts and no cloud sync.</p>
+                <p>Your data is included in your device's standard iCloud or iTunes backup (if enabled in your device settings). On Android, it is included in your Google backup (if enabled). If you restore your device from a backup, your Lystro data will be restored along with it.</p>`
+          },
+          {
+            q: "How do I delete all my data?",
+            a: `<p>You can delete individual lists or items from within the app. To remove all data completely, uninstall Lystro from your device — this permanently deletes all locally stored lists, items, photos, and settings.</p>`
+          },
+          {
+            q: "The app is crashing or behaving unexpectedly — what should I do?",
+            a: `<p>Try the following steps:</p>
+                <ul>
+                  <li>Force-close the app and reopen it.</li>
+                  <li>Make sure you are running the latest version of Lystro from the App Store (iOS) or Google Play (Android).</li>
+                  <li>Restart your device.</li>
+                </ul>
+                <p>If the problem persists, please <a href="mailto:${CONTACT_EMAIL}">contact us</a> with a description of what happened and which device and OS version you are using. We'll investigate as quickly as we can.</p>`
+          },
+        ]
+      },
+      {
+        heading: "Privacy",
+        content: `<p>Lystro is designed with your privacy in mind. Your lists and photos never leave your device. For full details, see our <a href="${PRIVACY_POLICY_URL}">Privacy Policy</a>.</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. All rights reserved.`
+  },
+
+  es: {
+    langLabel: "Idioma",
+    appName: "Lystro - Listas de Compras",
+    title: "Soporte",
+    subtitle: "Lystro - Listas de Compras",
+    intro: "Estamos aquí para ayudarte. Si tienes alguna pregunta o problema, consulta las preguntas frecuentes a continuación o contáctanos directamente.",
+    contact: {
+      icon: "✉️",
+      heading: "Contáctanos",
+      body: `Escríbenos a <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a> y te responderemos lo antes posible.`,
+      responseTime: "Tiempo de respuesta habitual: en 48 horas.",
+      linkLabel: CONTACT_EMAIL
+    },
+    sections: [
+      {
+        heading: "Preguntas frecuentes",
+        faq: [
+          {
+            q: "¿Cómo puedo restaurar mis compras después de reinstalar la app?",
+            a: `<p>Toca el icono de ajustes en la pantalla principal y luego toca <strong>Restaurar compras</strong>. Tu compra será verificada con la App Store o Google Play y los anuncios se eliminarán automáticamente. Asegúrate de haber iniciado sesión con el mismo Apple ID (iOS) o cuenta de Google (Android) con el que realizaste la compra originalmente.</p>`
+          },
+          {
+            q: "Las notificaciones no funcionan — ¿qué puedo hacer?",
+            a: `<p>Ve a <strong>Ajustes → Notificaciones → Lystro</strong> en tu dispositivo iOS y asegúrate de que las notificaciones estén activadas. Si reinstalaste la app, es posible que debas desactivar y volver a activar las notificaciones dentro de la app para registrar de nuevo los permisos.</p>`
+          },
+          {
+            q: "¿Cómo cambio el idioma de la app?",
+            a: `<p>Toca el icono de engranaje en la pantalla principal para abrir los ajustes y selecciona el idioma que desees. La app se reiniciará automáticamente.</p>`
+          },
+          {
+            q: "¿Dónde se guardan mis datos y se hace copia de seguridad?",
+            a: `<p>Todos tus datos se almacenan localmente en el dispositivo. Los datos nunca se envían a ningún servidor. En iOS, tus listas se incluyen automáticamente en la copia de seguridad de iCloud o iTunes. En Android, se incluyen en tu copia de seguridad de Google (si está activada). Se restaurarán si cambias o reinstallas el dispositivo.</p>`
+          },
+          {
+            q: "¿Cómo puedo eliminar todos mis datos?",
+            a: `<p>Desinstala Lystro de tu dispositivo. Esto eliminará permanentemente todas tus listas, elementos y fotos. Si tienes la copia de seguridad activada, los datos podrán restaurarse al reinstalar.</p>`
+          },
+          {
+            q: "La app se bloquea o no funciona correctamente. ¿Qué puedo hacer?",
+            a: `<p>Prueba los siguientes pasos en orden:</p><ol><li>Cierra la app forzadamente y vuelve a abrirla.</li><li>Asegúrate de tener la última versión de la App Store (iOS) o Google Play (Android).</li><li>Reinicia el dispositivo.</li></ol><p>Si el problema persiste, contáctanos en <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.</p>`
+          }
+        ]
+      },
+      {
+        heading: "Privacidad",
+        content: `<p>Lystro fue creado con tu privacidad en mente. Tus listas y fotos nunca abandonan el dispositivo. Para más detalles, consulta nuestra <a href="${PRIVACY_POLICY_URL}">Política de privacidad</a>.</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. Todos los derechos reservados.`
+  },
+
+  fr: {
+    langLabel: "Langue",
+    appName: "Lystro - Listes de Courses",
+    title: "Assistance",
+    subtitle: "Lystro - Listes de Courses",
+    intro: "Nous sommes là pour vous aider. Consultez les questions fréquentes ci-dessous ou contactez-nous directement — nous nous efforçons de répondre dans les 48 heures.",
+    contact: {
+      icon: "✉️",
+      heading: "Nous contacter",
+      body: "Vous avez une question sans réponse ci-dessous, vous avez trouvé un bug ou souhaitez partager un retour ? Envoyez-nous un e-mail et nous vous répondrons dès que possible.",
+      responseTime: "Délai de réponse habituel : sous 48 heures.",
+      linkLabel: CONTACT_EMAIL,
+    },
+    sections: [
+      {
+        heading: "Questions fréquentes",
+        faq: [
+          {
+            q: "Comment restaurer mon achat Supprimer les publicités ?",
+            a: `<p>Ouvrez l'app et accédez à <strong>À propos</strong> (icône des réglages sur l'écran principal). Appuyez sur <strong>Restaurer les achats</strong>. L'achat est vérifié auprès de l'App Store ou Google Play et les publicités sont supprimées automatiquement.</p>
+                <p>Vérifiez que vous êtes connecté au même identifiant Apple (iOS) ou compte Google (Android) que celui utilisé lors de l'achat initial.</p>`
+          },
+          {
+            q: "Les notifications ne fonctionnent pas — que faire ?",
+            a: `<p>Vérifiez les points suivants :</p>
+                <ul>
+                  <li>Accédez à <strong>Réglages → Notifications → Lystro</strong> et assurez-vous que les notifications sont autorisées.</li>
+                  <li>Vérifiez que l'heure du rappel que vous avez définie est bien dans le futur.</li>
+                  <li>Si vous avez récemment réinstallé l'app, ouvrez-la une fois pour réenregistrer les autorisations de notifications.</li>
+                </ul>`
+          },
+          {
+            q: "Comment changer la langue de l'application ?",
+            a: `<p>Ouvrez les <strong>Réglages</strong> (appuyez sur l'icône engrenage sur l'écran principal) et faites défiler jusqu'à la section <strong>Langue</strong>. Sélectionnez votre langue préférée — l'app redémarre automatiquement pour appliquer le changement.</p>
+                <p>Lystro est disponible en 33 langues.</p>`
+          },
+          {
+            q: "Où sont stockées mes données ? Sont-elles sauvegardées ?",
+            a: `<p>Toutes vos listes de courses, articles, notes et photos sont stockés localement sur votre appareil. Aucune donnée n'est jamais envoyée vers un serveur — pas de compte, pas de synchronisation cloud.</p>
+                <p>Vos données sont incluses dans la sauvegarde iCloud ou iTunes standard de votre appareil (si activée). Sur Android, vos données sont incluses dans votre sauvegarde Google (si activée). Si vous restaurez votre appareil depuis une sauvegarde, vos données Lystro seront restaurées avec.</p>`
+          },
+          {
+            q: "Comment supprimer toutes mes données ?",
+            a: `<p>Vous pouvez supprimer des listes ou des articles individuels depuis l'app. Pour effacer toutes les données, désinstallez Lystro de votre appareil — cela supprime définitivement toutes les listes, articles, photos et réglages stockés localement.</p>`
+          },
+          {
+            q: "L'app plante ou se comporte de façon inattendue — que faire ?",
+            a: `<p>Essayez les étapes suivantes :</p>
+                <ul>
+                  <li>Forcez la fermeture de l'app et rouvrez-la.</li>
+                  <li>Assurez-vous que vous utilisez la dernière version de Lystro depuis l'App Store (iOS) ou Google Play (Android).</li>
+                  <li>Redémarrez votre appareil.</li>
+                </ul>
+                <p>Si le problème persiste, <a href="mailto:${CONTACT_EMAIL}">contactez-nous</a> en décrivant ce qui s'est passé et en indiquant votre appareil et la version du système d'exploitation. Nous ferons le nécessaire dans les plus brefs délais.</p>`
+          },
+        ]
+      },
+      {
+        heading: "Confidentialité",
+        content: `<p>Lystro est conçu dans le respect de votre vie privée. Vos listes et photos ne quittent jamais votre appareil. Pour tous les détails, consultez notre <a href="${PRIVACY_POLICY_URL}">Politique de confidentialité</a>.</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. Tous droits réservés.`
+  },
+
+  hr: {
+    langLabel: "Jezik",
+    appName: "Lystro - Liste za Kupovinu",
+    title: "Podrška",
+    subtitle: "Lystro - Liste za Kupovinu",
+    intro: "Ovdje smo da pomognemo. Pregledajte često postavljana pitanja u nastavku ili nam se obratite izravno — nastojimo odgovoriti u roku od 48 sati.",
+    contact: {
+      icon: "✉️",
+      heading: "Kontaktirajte nas",
+      body: "Imate pitanje na koje nema odgovora u nastavku, pronašli ste grešku ili želite podijeliti povratnu informaciju? Pošaljite nam e-mail i odgovorit ćemo što je prije moguće.",
+      responseTime: "Tipično vrijeme odgovora: unutar 48 sati.",
+      linkLabel: CONTACT_EMAIL,
+    },
+    sections: [
+      {
+        heading: "Često postavljana pitanja",
+        faq: [
+          {
+            q: "Kako vratiti kupnju Ukloni reklame?",
+            a: `<p>Otvorite aplikaciju i idite na <strong>Informacije</strong> (ikona postavki na glavnom zaslonu). Dodirnite <strong>Vrati kupnje</strong>. Kupnja će biti potvrđena putem App Storea ili Google Playa i reklame će biti automatski uklonjene.</p>
+                <p>Provjerite jeste li prijavljeni istim Apple ID-om (iOS) ili Google računom (Android) koji ste koristili pri izvornoj kupnji.</p>`
+          },
+          {
+            q: "Obavijesti ne rade — što trebam učiniti?",
+            a: `<p>Provjerite sljedeće:</p>
+                <ul>
+                  <li>Idite na <strong>Postavke → Obavijesti → Lystro</strong> na uređaju i uvjerite se da su obavijesti dopuštene.</li>
+                  <li>Provjerite je li postavljeno vrijeme podsjetnika u budućnosti.</li>
+                  <li>Ako ste nedavno ponovo instalirali aplikaciju, otvorite je jednom kako biste ponovo registrirali dopuštenja za obavijesti.</li>
+                </ul>`
+          },
+          {
+            q: "Kako promijeniti jezik aplikacije?",
+            a: `<p>Otvorite <strong>Postavke</strong> (dotaknite ikonu zupčanika na glavnom zaslonu) i pomaknite se prema dolje do odjeljka <strong>Jezik</strong>. Odaberite željeni jezik — aplikacija će se automatski ponovo pokrenuti kako bi primijenila promjenu.</p>
+                <p>Lystro podržava 33 jezika.</p>`
+          },
+          {
+            q: "Gdje se pohranjuju moji podaci? Postoje li sigurnosne kopije?",
+            a: `<p>Svi vaši popisi za kupnju, stavke, bilješke i fotografije pohranjuju se lokalno na vašem uređaju. Nikakvi podaci se ne šalju na poslužitelj — nema računa ni sinkronizacije u oblaku.</p>
+                <p>Vaši podaci uključeni su u standardnu iCloud ili iTunes sigurnosnu kopiju uređaja (ako je omogućena). Na Androidu su podaci uključeni u vašu Google sigurnosnu kopiju (ako je omogućena). Ako obnovite uređaj iz sigurnosne kopije, podaci Lystro bit će obnovljeni zajedno s njim.</p>`
+          },
+          {
+            q: "Kako izbrisati sve podatke?",
+            a: `<p>Možete brisati pojedine popise ili stavke unutar aplikacije. Za potpuno uklanjanje svih podataka, deinstalirajte Lystro s uređaja — time se trajno brišu svi lokalno pohranjeni popisi, stavke, fotografije i postavke.</p>`
+          },
+          {
+            q: "Aplikacija se ruši ili se ponaša neočekivano — što trebam učiniti?",
+            a: `<p>Isprobajte sljedeće korake:</p>
+                <ul>
+                  <li>Prisilno zatvorite aplikaciju i ponovo je otvorite.</li>
+                  <li>Uvjerite se da koristite najnoviju verziju Lystro iz App Storea (iOS) ili Google Playa (Android).</li>
+                  <li>Ponovo pokrenite uređaj.</li>
+                </ul>
+                <p>Ako se problem nastavi, <a href="mailto:${CONTACT_EMAIL}">kontaktirajte nas</a> s opisom što se dogodilo te modelom uređaja i verzijom OS-a. Istražit ćemo to što je prije moguće.</p>`
+          },
+        ]
+      },
+      {
+        heading: "Privatnost",
+        content: `<p>Lystro je dizajniran s mišlju na vašu privatnost. Vaši popisi i fotografije nikada ne napuštaju uređaj. Za više detalja pogledajte našu <a href="${PRIVACY_POLICY_URL}">Politiku privatnosti</a>.</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. Sva prava pridržana.`
+  },
+
+  id: {
+    langLabel: "Bahasa",
+    appName: "Lystro - Daftar Belanja Mudah",
+    title: "Dukungan",
+    subtitle: "Lystro - Daftar Belanja Mudah",
+    intro: "Kami di sini untuk membantu. Lihat pertanyaan yang sering diajukan di bawah ini atau hubungi kami langsung — kami bertujuan merespons dalam 48 jam.",
+    contact: {
+      icon: "✉️",
+      heading: "Hubungi Kami",
+      body: "Punya pertanyaan yang tidak terjawab di bawah, menemukan bug, atau ingin berbagi masukan? Kirim email kepada kami dan kami akan membalas sesegera mungkin.",
+      responseTime: "Waktu respons tipikal: dalam 48 jam.",
+      linkLabel: CONTACT_EMAIL,
+    },
+    sections: [
+      {
+        heading: "Pertanyaan yang Sering Diajukan",
+        faq: [
+          {
+            q: "Bagaimana cara memulihkan pembelian Hapus Iklan?",
+            a: `<p>Buka aplikasi dan pergi ke <strong>Tentang</strong> (ikon pengaturan di layar utama). Ketuk <strong>Pulihkan Pembelian</strong>. Pembelian akan diverifikasi melalui App Store atau Google Play dan iklan akan dihapus secara otomatis.</p>
+                <p>Pastikan Anda masuk dengan Apple ID (iOS) atau akun Google (Android) yang sama yang digunakan saat pembelian asli.</p>`
+          },
+          {
+            q: "Notifikasi tidak berfungsi — apa yang harus saya lakukan?",
+            a: `<p>Periksa hal berikut:</p>
+                <ul>
+                  <li>Buka <strong>Pengaturan → Notifikasi → Lystro</strong> di perangkat Anda dan pastikan notifikasi diizinkan.</li>
+                  <li>Pastikan waktu pengingat yang Anda atur ada di masa depan.</li>
+                  <li>Jika Anda baru saja menginstal ulang aplikasi, buka sekali untuk mendaftarkan ulang izin notifikasi.</li>
+                </ul>`
+          },
+          {
+            q: "Bagaimana cara mengubah bahasa aplikasi?",
+            a: `<p>Buka <strong>Pengaturan</strong> (ketuk ikon roda gigi di layar utama) dan gulir ke bawah ke bagian <strong>Bahasa</strong>. Pilih bahasa pilihan Anda — aplikasi akan otomatis dimulai ulang untuk menerapkan perubahan.</p>
+                <p>Lystro mendukung 33 bahasa.</p>`
+          },
+          {
+            q: "Di mana data saya disimpan? Apakah ada cadangan?",
+            a: `<p>Semua daftar belanja, item, catatan, dan foto Anda disimpan secara lokal di perangkat Anda. Tidak ada data yang pernah dikirim ke server — tidak ada akun dan tidak ada sinkronisasi cloud.</p>
+                <p>Data Anda termasuk dalam cadangan iCloud atau iTunes standar perangkat Anda (jika diaktifkan). Di Android, data disertakan dalam cadangan Google Anda (jika diaktifkan). Jika Anda memulihkan perangkat dari cadangan, data Lystro Anda akan dipulihkan bersama.</p>`
+          },
+          {
+            q: "Bagaimana cara menghapus semua data saya?",
+            a: `<p>Anda dapat menghapus daftar atau item individual dari dalam aplikasi. Untuk menghapus semua data sepenuhnya, hapus instalasi Lystro dari perangkat Anda — ini secara permanen menghapus semua daftar, item, foto, dan pengaturan yang tersimpan secara lokal.</p>`
+          },
+          {
+            q: "Aplikasi sering crash atau berperilaku tidak terduga — apa yang harus dilakukan?",
+            a: `<p>Coba langkah-langkah berikut:</p>
+                <ul>
+                  <li>Paksa tutup aplikasi dan buka kembali.</li>
+                  <li>Pastikan Anda menjalankan versi terbaru Lystro dari App Store (iOS) atau Google Play (Android).</li>
+                  <li>Mulai ulang perangkat Anda.</li>
+                </ul>
+                <p>Jika masalah berlanjut, silakan <a href="mailto:${CONTACT_EMAIL}">hubungi kami</a> dengan deskripsi apa yang terjadi serta perangkat dan versi OS yang Anda gunakan. Kami akan menyelidikinya secepat mungkin.</p>`
+          },
+        ]
+      },
+      {
+        heading: "Privasi",
+        content: `<p>Lystro dirancang dengan mengutamakan privasi Anda. Daftar dan foto Anda tidak pernah meninggalkan perangkat. Lihat <a href="${PRIVACY_POLICY_URL}">Kebijakan Privasi</a> kami untuk detail lengkapnya.</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. Semua hak dilindungi.`
+  },
+
+  it: {
+    langLabel: "Lingua",
+    appName: "Lystro - Liste della Spesa",
+    title: "Assistenza",
+    subtitle: "Lystro - Liste della Spesa",
+    intro: "Siamo qui per aiutarti. Sfoglia le domande frequenti qui sotto o contattaci direttamente — cerchiamo di rispondere entro 48 ore.",
+    contact: {
+      icon: "✉️",
+      heading: "Contattaci",
+      body: "Hai una domanda senza risposta qui sotto, hai trovato un bug o vuoi condividere un feedback? Scrivici un'e-mail e ti risponderemo il prima possibile.",
+      responseTime: "Tempo di risposta tipico: entro 48 ore.",
+      linkLabel: CONTACT_EMAIL,
+    },
+    sections: [
+      {
+        heading: "Domande frequenti",
+        faq: [
+          {
+            q: "Come ripristino l'acquisto Rimuovi pubblicità?",
+            a: `<p>Apri l'app e vai su <strong>Info</strong> (icona delle impostazioni nella schermata principale). Tocca <strong>Ripristina acquisti</strong>. L'acquisto viene verificato tramite App Store o Google Play e le pubblicità vengono rimosse automaticamente.</p>
+                <p>Assicurati di essere connesso con lo stesso Apple ID (iOS) o account Google (Android) utilizzato durante l'acquisto originale.</p>`
+          },
+          {
+            q: "Le notifiche non funzionano — cosa devo fare?",
+            a: `<p>Controlla i seguenti punti:</p>
+                <ul>
+                  <li>Vai su <strong>Impostazioni → Notifiche → Lystro</strong> e assicurati che le notifiche siano consentite.</li>
+                  <li>Verifica che l'orario del promemoria impostato sia nel futuro.</li>
+                  <li>Se hai reinstallato di recente l'app, aprila una volta per registrare nuovamente i permessi delle notifiche.</li>
+                </ul>`
+          },
+          {
+            q: "Come cambio la lingua dell'app?",
+            a: `<p>Apri le <strong>Impostazioni</strong> (tocca l'icona ingranaggio nella schermata principale) e scorri fino alla sezione <strong>Lingua</strong>. Seleziona la lingua preferita — l'app si riavvia automaticamente per applicare la modifica.</p>
+                <p>Lystro supporta 33 lingue.</p>`
+          },
+          {
+            q: "Dove vengono salvati i miei dati? Vengono effettuati backup?",
+            a: `<p>Tutte le tue liste della spesa, articoli, note e foto sono salvati localmente sul tuo dispositivo. Non vengono mai inviati dati a un server — nessun account, nessuna sincronizzazione cloud.</p>
+                <p>I tuoi dati sono inclusi nel backup standard iCloud o iTunes del dispositivo (se attivato). Su Android, i dati sono inclusi nel backup Google (se attivato). Se ripristini il dispositivo da un backup, i dati Lystro vengono ripristinati insieme.</p>`
+          },
+          {
+            q: "Come elimino tutti i miei dati?",
+            a: `<p>Puoi eliminare singole liste o articoli dall'interno dell'app. Per rimuovere tutti i dati, disinstalla Lystro dal dispositivo — questo elimina definitivamente tutte le liste, gli articoli, le foto e le impostazioni salvati localmente.</p>`
+          },
+          {
+            q: "L'app si blocca o si comporta in modo inatteso — cosa devo fare?",
+            a: `<p>Prova i seguenti passaggi:</p>
+                <ul>
+                  <li>Forza la chiusura dell'app e riaprila.</li>
+                  <li>Assicurati di utilizzare l'ultima versione di Lystro dall'App Store (iOS) o Google Play (Android).</li>
+                  <li>Riavvia il dispositivo.</li>
+                </ul>
+                <p>Se il problema persiste, <a href="mailto:${CONTACT_EMAIL}">contattaci</a> descrivendo cosa è successo e indicando il dispositivo e la versione OS in uso. Indagheremo il prima possibile.</p>`
+          },
+        ]
+      },
+      {
+        heading: "Privacy",
+        content: `<p>Lystro è progettato nel rispetto della tua privacy. Le tue liste e foto non lasciano mai il dispositivo. Per tutti i dettagli, consulta la nostra <a href="${PRIVACY_POLICY_URL}">Informativa sulla privacy</a>.</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. Tutti i diritti riservati.`
+  },
+
+  hu: {
+    langLabel: "Nyelv",
+    appName: "Lystro - Bevásárlólisták",
+    title: "Támogatás",
+    subtitle: "Lystro - Bevásárlólisták",
+    intro: "Itt vagyunk, hogy segítsünk. Nézd át az alábbi gyakran ismételt kérdéseket, vagy lépj kapcsolatba velünk közvetlenül — igyekszünk 48 órán belül válaszolni.",
+    contact: {
+      icon: "✉️",
+      heading: "Lépj kapcsolatba velünk",
+      body: "Van olyan kérdésed, amelyre nem találsz választ lent, hibát fedeztél fel vagy visszajelzést szeretnél küldeni? Írj nekünk e-mailt, és a lehető leghamarabb visszajelzünk.",
+      responseTime: "Tipikus válaszidő: 48 órán belül.",
+      linkLabel: CONTACT_EMAIL,
+    },
+    sections: [
+      {
+        heading: "Gyakran ismételt kérdések",
+        faq: [
+          {
+            q: "Hogyan állítsam vissza a Reklámok eltávolítása vásárlásomat?",
+            a: `<p>Nyisd meg az alkalmazást és navigálj a <strong>Névjegy</strong> oldalra (beállítások ikon a főképernyőn). Koppints a <strong>Vásárlások visszaállítása</strong> gombra. A vásárlás az App Store-on vagy a Google Play-en keresztül kerül ellenőrzésre, a hirdetések automatikusan eltűnnek.</p>
+                <p>Győződj meg arról, hogy ugyanazzal az Apple ID-vel (iOS) vagy Google-fiókkal (Android) vagy bejelentkezve, amelyet az eredeti vásárlásnál használtál.</p>`
+          },
+          {
+            q: "Az értesítések nem működnek — mit tegyek?",
+            a: `<p>Ellenőrizd a következőket:</p>
+                <ul>
+                  <li>Navigálj a <strong>Beállítások → Értesítések → Lystro</strong> menübe és győződj meg arról, hogy az értesítések engedélyezve vannak.</li>
+                  <li>Győződj meg arról, hogy a beállított emlékeztető ideje a jövőben van.</li>
+                  <li>Ha nemrég újratelepítetted az alkalmazást, nyisd meg egyszer az értesítési engedélyek újraregisztrálásához.</li>
+                </ul>`
+          },
+          {
+            q: "Hogyan változtathatom meg az alkalmazás nyelvét?",
+            a: `<p>Nyisd meg a <strong>Beállítások</strong> menüt (koppints a fogaskerék ikonra a főképernyőn) és görgess le a <strong>Nyelv</strong> részhez. Válaszd ki a kívánt nyelvet — az alkalmazás automatikusan újraindul a változtatás alkalmazásához.</p>
+                <p>A Lystro 33 nyelvet támogat.</p>`
+          },
+          {
+            q: "Hol tárolódnak az adataim? Készülnek biztonsági mentések?",
+            a: `<p>Az összes bevásárlólistád, elemeid, megjegyzéseid és fotóid helyileg tárolódnak az eszközödön. Az adatok soha nem kerülnek szerverre — nincsenek fiókok és nincs felhőszinkronizálás.</p>
+                <p>Az adataid szerepelnek az eszköz szokásos iCloud vagy iTunes biztonsági mentésében (ha engedélyezve van). Androidon az adataid a Google biztonsági mentésbe kerülnek (ha engedélyezve van). Ha visszaállítod az eszközt egy biztonsági mentésből, a Lystro adataid is visszaállnak.</p>`
+          },
+          {
+            q: "Hogyan törölhetem az összes adatomat?",
+            a: `<p>Az egyes listákat vagy elemeket az alkalmazásból törölheted. Az összes adat teljes eltávolításához távolítsd el a Lystro alkalmazást az eszközödről — ez véglegesen törli az összes helyileg tárolt listát, elemet, fotót és beállítást.</p>`
+          },
+          {
+            q: "Az alkalmazás összeomlik vagy váratlanul viselkedik — mit tegyek?",
+            a: `<p>Próbáld ki a következő lépéseket:</p>
+                <ul>
+                  <li>Kényszerítsd az alkalmazást bezárni, majd nyisd meg újra.</li>
+                  <li>Győződj meg arról, hogy a Lystro legújabb verzióját használod az App Store-ból (iOS) vagy a Google Play-ből (Android).</li>
+                  <li>Indítsd újra az eszközödet.</li>
+                </ul>
+                <p>Ha a probléma fennáll, <a href="mailto:${CONTACT_EMAIL}">vedd fel velünk a kapcsolatot</a>, leírva mi történt, és megadva az eszközödet és az OS verziót. A lehető leghamarabb megvizsgáljuk.</p>`
+          },
+        ]
+      },
+      {
+        heading: "Adatvédelem",
+        content: `<p>A Lystro az adatvédelmedet szem előtt tartva készült. A listáid és fotóid soha nem hagyják el az eszközödet. A részletekért olvasd el az <a href="${PRIVACY_POLICY_URL}">Adatvédelmi irányelveinket</a>.</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. Minden jog fenntartva.`
+  },
+
+  nl: {
+    langLabel: "Taal",
+    appName: "Lystro - Boodschappenlijsten",
+    title: "Ondersteuning",
+    subtitle: "Lystro - Boodschappenlijsten",
+    intro: "We zijn er om je te helpen. Bekijk de veelgestelde vragen hieronder of neem direct contact met ons op — we streven ernaar om binnen 48 uur te reageren.",
+    contact: {
+      icon: "✉️",
+      heading: "Neem contact op",
+      body: "Heb je een vraag die hieronder niet wordt beantwoord, een bug gevonden of wil je feedback delen? Stuur ons een e-mail en we reageren zo snel mogelijk.",
+      responseTime: "Typische reactietijd: binnen 48 uur.",
+      linkLabel: CONTACT_EMAIL,
+    },
+    sections: [
+      {
+        heading: "Veelgestelde vragen",
+        faq: [
+          {
+            q: "Hoe herstel ik mijn Verwijder advertenties-aankoop?",
+            a: `<p>Open de app en ga naar <strong>Info</strong> (het instellingenpictogram op het hoofdscherm). Tik op <strong>Aankopen herstellen</strong>. Je aankoop wordt geverifieerd via de App Store of Google Play en advertenties worden automatisch verwijderd.</p>
+                <p>Zorg ervoor dat je bent ingelogd op hetzelfde Apple ID (iOS) of Google-account (Android) dat werd gebruikt bij de oorspronkelijke aankoop.</p>`
+          },
+          {
+            q: "Meldingen werken niet — wat moet ik doen?",
+            a: `<p>Controleer het volgende:</p>
+                <ul>
+                  <li>Ga naar <strong>Instellingen → Meldingen → Lystro</strong> en zorg ervoor dat meldingen zijn toegestaan.</li>
+                  <li>Zorg ervoor dat de herinneringstijd die je hebt ingesteld in de toekomst ligt.</li>
+                  <li>Als je de app onlangs opnieuw hebt geïnstalleerd, open deze dan eenmaal om meldingsmachtigingen opnieuw te registreren.</li>
+                </ul>`
+          },
+          {
+            q: "Hoe verander ik de taal van de app?",
+            a: `<p>Open <strong>Instellingen</strong> (tik op het tandwielpictogram op het hoofdscherm) en scroll naar beneden naar de sectie <strong>Taal</strong>. Selecteer je voorkeurstaal — de app wordt automatisch opnieuw gestart om de wijziging toe te passen.</p>
+                <p>Lystro ondersteunt 33 talen.</p>`
+          },
+          {
+            q: "Waar worden mijn gegevens opgeslagen? Zijn er back-ups?",
+            a: `<p>Al je boodschappenlijsten, artikelen, notities en foto's worden lokaal op je apparaat opgeslagen. Er worden nooit gegevens naar een server verzonden — er zijn geen accounts en geen cloudsynchronisatie.</p>
+                <p>Je gegevens zijn opgenomen in de standaard iCloud- of iTunes-back-up van je apparaat (als dit is ingeschakeld). Op Android zijn je gegevens opgenomen in je Google-back-up (als dit is ingeschakeld). Als je je apparaat herstelt vanuit een back-up, worden je Lystro-gegevens mee hersteld.</p>`
+          },
+          {
+            q: "Hoe verwijder ik al mijn gegevens?",
+            a: `<p>Je kunt afzonderlijke lijsten of artikelen vanuit de app verwijderen. Om alle gegevens volledig te verwijderen, verwijder je Lystro van je apparaat — dit verwijdert permanent alle lokaal opgeslagen lijsten, artikelen, foto's en instellingen.</p>`
+          },
+          {
+            q: "De app crasht of gedraagt zich onverwacht — wat moet ik doen?",
+            a: `<p>Probeer de volgende stappen:</p>
+                <ul>
+                  <li>Sluit de app geforceerd en open hem opnieuw.</li>
+                  <li>Zorg ervoor dat je de nieuwste versie van Lystro uit de App Store (iOS) of Google Play (Android) gebruikt.</li>
+                  <li>Herstart je apparaat.</li>
+                </ul>
+                <p>Als het probleem aanhoudt, <a href="mailto:${CONTACT_EMAIL}">neem dan contact met ons op</a> met een beschrijving van wat er is gebeurd en welk apparaat en OS-versie je gebruikt. We onderzoeken het zo snel mogelijk.</p>`
+          },
+        ]
+      },
+      {
+        heading: "Privacy",
+        content: `<p>Lystro is ontworpen met jouw privacy in gedachten. Je lijsten en foto's verlaten nooit je apparaat. Zie ons <a href="${PRIVACY_POLICY_URL}">Privacybeleid</a> voor alle details.</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. Alle rechten voorbehouden.`
+  },
+
+  no: {
+    langLabel: "Språk",
+    appName: "Lystro - Enkle Handlelister",
+    title: "Support",
+    subtitle: "Lystro - Enkle Handlelister",
+    intro: "Vi er her for å hjelpe. Se gjennom de ofte stilte spørsmålene nedenfor, eller kontakt oss direkte — vi sikter på å svare innen 48 timer.",
+    contact: {
+      icon: "✉️",
+      heading: "Kontakt oss",
+      body: "Har du et spørsmål som ikke er besvart nedenfor, funnet en feil eller ønsker å dele tilbakemelding? Send oss en e-post og vi svarer så fort som mulig.",
+      responseTime: "Typisk svartid: innen 48 timer.",
+      linkLabel: CONTACT_EMAIL,
+    },
+    sections: [
+      {
+        heading: "Ofte stilte spørsmål",
+        faq: [
+          {
+            q: "Hvordan gjenoppretter jeg kjøpet Fjern annonser?",
+            a: `<p>Åpne appen og gå til <strong>Om</strong> (innstillingsikonet på startskjermen). Trykk på <strong>Gjenopprett kjøp</strong>. Kjøpet bekreftes via App Store eller Google Play og annonser fjernes automatisk.</p>
+                <p>Sørg for at du er logget inn med samme Apple ID (iOS) eller Google-konto (Android) som ble brukt ved det opprinnelige kjøpet.</p>`
+          },
+          {
+            q: "Varsler fungerer ikke — hva bør jeg gjøre?",
+            a: `<p>Sjekk følgende:</p>
+                <ul>
+                  <li>Gå til <strong>Innstillinger → Varsler → Lystro</strong> og sørg for at varsler er tillatt.</li>
+                  <li>Sørg for at påminnelsestidspunktet du har satt er i fremtiden.</li>
+                  <li>Hvis du nylig reinstallerte appen, åpne den én gang for å registrere varslingstillatelser på nytt.</li>
+                </ul>`
+          },
+          {
+            q: "Hvordan endrer jeg appens språk?",
+            a: `<p>Åpne <strong>Innstillinger</strong> (trykk på tannhjulikonet på startskjermen) og rull ned til <strong>Språk</strong>-seksjonen. Velg ønsket språk — appen starter automatisk på nytt for å ta i bruk endringen.</p>
+                <p>Lystro støtter 33 språk.</p>`
+          },
+          {
+            q: "Hvor lagres dataene mine? Tas det sikkerhetskopi?",
+            a: `<p>Alle handlelistene, varene, notatene og bildene dine lagres lokalt på enheten din. Det sendes aldri data til en server — ingen kontoer og ingen skysynkronisering.</p>
+                <p>Dataene dine er inkludert i enhetens standard iCloud- eller iTunes-sikkerhetskopi (hvis aktivert). På Android er de inkludert i Google-sikkerhetskopien din (hvis aktivert). Hvis du gjenoppretter enheten fra en sikkerhetskopi, gjenopprettes Lystro-dataene dine med.</p>`
+          },
+          {
+            q: "Hvordan sletter jeg alle dataene mine?",
+            a: `<p>Du kan slette individuelle lister eller varer fra appen. For å fjerne alle data fullstendig, avinstaller Lystro fra enheten din — dette sletter permanent alle lokalt lagrede lister, varer, bilder og innstillinger.</p>`
+          },
+          {
+            q: "Appen krasjer eller oppfører seg uventet — hva bør jeg gjøre?",
+            a: `<p>Prøv følgende trinn:</p>
+                <ul>
+                  <li>Tving appen til å lukke og åpne den igjen.</li>
+                  <li>Sørg for at du kjører den nyeste versjonen av Lystro fra App Store (iOS) eller Google Play (Android).</li>
+                  <li>Start enheten på nytt.</li>
+                </ul>
+                <p>Hvis problemet vedvarer, <a href="mailto:${CONTACT_EMAIL}">kontakt oss</a> med en beskrivelse av hva som skjedde samt hvilken enhet og OS-versjon du bruker. Vi undersøker det så raskt som mulig.</p>`
+          },
+        ]
+      },
+      {
+        heading: "Personvern",
+        content: `<p>Lystro er designet med personvernet ditt i tankene. Listene og bildene dine forlater aldri enheten. Se vår <a href="${PRIVACY_POLICY_URL}">Personvernerklæring</a> for alle detaljer.</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. Alle rettigheter forbeholdt.`
+  },
+
+  pl: {
+    langLabel: "Język",
+    appName: "Lystro - Proste Listy Zakupów",
+    title: "Pomoc",
+    subtitle: "Lystro - Proste Listy Zakupów",
+    intro: "Jesteśmy tutaj, aby pomóc. Przejrzyj często zadawane pytania poniżej lub skontaktuj się z nami bezpośrednio — staramy się odpowiadać w ciągu 48 godzin.",
+    contact: {
+      icon: "✉️",
+      heading: "Skontaktuj się z nami",
+      body: "Masz pytanie, na które nie ma odpowiedzi poniżej, znalazłeś błąd lub chcesz podzielić się opinią? Napisz do nas, a odpowiemy tak szybko, jak to możliwe.",
+      responseTime: "Typowy czas odpowiedzi: do 48 godzin.",
+      linkLabel: CONTACT_EMAIL,
+    },
+    sections: [
+      {
+        heading: "Często zadawane pytania",
+        faq: [
+          {
+            q: "Jak przywrócić zakup Usuń reklamy?",
+            a: `<p>Otwórz aplikację i przejdź do <strong>Informacje</strong> (ikona ustawień na ekranie głównym). Dotknij <strong>Przywróć zakupy</strong>. Zakup zostanie zweryfikowany w App Store lub Google Play i reklamy zostaną automatycznie usunięte.</p>
+                <p>Upewnij się, że jesteś zalogowany na to samo Apple ID (iOS) lub konto Google (Android), które było użyte podczas pierwotnego zakupu.</p>`
+          },
+          {
+            q: "Powiadomienia nie działają — co powinienem zrobić?",
+            a: `<p>Sprawdź następujące kwestie:</p>
+                <ul>
+                  <li>Przejdź do <strong>Ustawienia → Powiadomienia → Lystro</strong> na urządzeniu i upewnij się, że powiadomienia są włączone.</li>
+                  <li>Upewnij się, że ustawiony czas przypomnienia jest w przyszłości.</li>
+                  <li>Jeśli niedawno ponownie zainstalowałeś aplikację, otwórz ją raz, aby ponownie zarejestrować uprawnienia do powiadomień.</li>
+                </ul>`
+          },
+          {
+            q: "Jak zmienić język aplikacji?",
+            a: `<p>Otwórz <strong>Ustawienia</strong> (dotknij ikony koła zębatego na ekranie głównym) i przewiń w dół do sekcji <strong>Język</strong>. Wybierz preferowany język — aplikacja uruchomi się ponownie, aby zastosować zmianę.</p>
+                <p>Lystro obsługuje 33 języki.</p>`
+          },
+          {
+            q: "Gdzie są przechowywane moje dane? Czy są wykonywane kopie zapasowe?",
+            a: `<p>Wszystkie listy zakupów, pozycje, notatki i zdjęcia są przechowywane lokalnie na Twoim urządzeniu. Żadne dane nie są wysyłane na serwer — nie ma kont ani synchronizacji z chmurą.</p>
+                <p>Twoje dane są uwzględniane w standardowej kopii zapasowej iCloud lub iTunes urządzenia (jeśli jest włączona). Na Androidzie dane są uwzględniane w kopii zapasowej Google (jeśli jest włączona). Jeśli przywrócisz urządzenie z kopii zapasowej, dane Lystro zostaną przywrócone wraz z nimi.</p>`
+          },
+          {
+            q: "Jak usunąć wszystkie moje dane?",
+            a: `<p>Możesz usunąć poszczególne listy lub pozycje w aplikacji. Aby całkowicie usunąć wszystkie dane, odinstaluj Lystro z urządzenia — spowoduje to trwałe usunięcie wszystkich lokalnie przechowywanych list, pozycji, zdjęć i ustawień.</p>`
+          },
+          {
+            q: "Aplikacja się zawiesza lub działa nieprawidłowo — co powinienem zrobić?",
+            a: `<p>Wypróbuj następujące kroki:</p>
+                <ul>
+                  <li>Wymuś zamknięcie aplikacji i otwórz ją ponownie.</li>
+                  <li>Upewnij się, że masz zainstalowaną najnowszą wersję Lystro z App Store (iOS) lub Google Play (Android).</li>
+                  <li>Uruchom ponownie urządzenie.</li>
+                </ul>
+                <p>Jeśli problem się utrzymuje, <a href="mailto:${CONTACT_EMAIL}">skontaktuj się z nami</a>, opisując co się stało oraz podając model urządzenia i wersję systemu operacyjnego. Zbadamy to tak szybko, jak to możliwe.</p>`
+          },
+        ]
+      },
+      {
+        heading: "Prywatność",
+        content: `<p>Lystro zostało zaprojektowane z myślą o Twojej prywatności. Twoje listy i zdjęcia nigdy nie opuszczają urządzenia. Aby dowiedzieć się więcej, przeczytaj naszą <a href="${PRIVACY_POLICY_URL}">Politykę Prywatności</a>.</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. Wszelkie prawa zastrzeżone.`
+  },
+
+  pt: {
+    langLabel: "Idioma",
+    appName: "Lystro - Listas de Compras",
+    title: "Suporte",
+    subtitle: "Lystro - Listas de Compras",
+    intro: "Estamos aqui para ajudar. Consulte as perguntas frequentes abaixo ou entre em contato diretamente — buscamos responder em até 48 horas.",
+    contact: {
+      icon: "✉️",
+      heading: "Fale conosco",
+      body: "Tem uma pergunta que não está respondida abaixo, encontrou um bug ou quer compartilhar um feedback? Envie um e-mail e responderemos o mais rápido possível.",
+      responseTime: "Tempo de resposta típico: até 48 horas.",
+      linkLabel: CONTACT_EMAIL,
+    },
+    sections: [
+      {
+        heading: "Perguntas frequentes",
+        faq: [
+          {
+            q: "Como restaurar a compra de Remover anúncios?",
+            a: `<p>Abra o app e acesse <strong>Sobre</strong> (ícone de configurações na tela principal). Toque em <strong>Restaurar compras</strong>. A compra é verificada pela App Store ou Google Play e os anúncios são removidos automaticamente.</p>
+                <p>Certifique-se de estar conectado com o mesmo Apple ID (iOS) ou conta Google (Android) usado na compra original.</p>`
+          },
+          {
+            q: "As notificações não estão funcionando — o que devo fazer?",
+            a: `<p>Verifique os seguintes pontos:</p>
+                <ul>
+                  <li>Vá em <strong>Ajustes → Notificações → Lystro</strong> e certifique-se de que as notificações estão permitidas.</li>
+                  <li>Verifique se o horário do lembrete definido está no futuro.</li>
+                  <li>Se você reinstalou o app recentemente, abra-o uma vez para registrar novamente as permissões de notificação.</li>
+                </ul>`
+          },
+          {
+            q: "Como alterar o idioma do app?",
+            a: `<p>Abra as <strong>Configurações</strong> (toque no ícone de engrenagem na tela principal) e role até a seção <strong>Idioma</strong>. Selecione o idioma preferido — o app reinicia automaticamente para aplicar a alteração.</p>
+                <p>O Lystro suporta 33 idiomas.</p>`
+          },
+          {
+            q: "Onde meus dados são armazenados? Há backup?",
+            a: `<p>Todas as suas listas de compras, itens, notas e fotos são armazenados localmente no seu dispositivo. Nenhum dado é enviado para um servidor — sem contas e sem sincronização na nuvem.</p>
+                <p>Seus dados estão incluídos no backup padrão do iCloud ou iTunes do dispositivo (se ativado). No Android, estão incluídos no backup do Google (se ativado). Se você restaurar o dispositivo a partir de um backup, seus dados do Lystro serão restaurados junto.</p>`
+          },
+          {
+            q: "Como excluir todos os meus dados?",
+            a: `<p>Você pode excluir listas ou itens individuais dentro do app. Para remover todos os dados, desinstale o Lystro do dispositivo — isso exclui permanentemente todas as listas, itens, fotos e configurações armazenados localmente.</p>`
+          },
+          {
+            q: "O app está travando ou se comportando de forma inesperada — o que fazer?",
+            a: `<p>Tente as seguintes etapas:</p>
+                <ul>
+                  <li>Force o fechamento do app e abra-o novamente.</li>
+                  <li>Certifique-se de que você está usando a versão mais recente do Lystro da App Store (iOS) ou Google Play (Android).</li>
+                  <li>Reinicie o dispositivo.</li>
+                </ul>
+                <p>Se o problema persistir, <a href="mailto:${CONTACT_EMAIL}">entre em contato</a> descrevendo o que aconteceu e informando o dispositivo e a versão do SO que você usa. Investigaremos o mais rápido possível.</p>`
+          },
+        ]
+      },
+      {
+        heading: "Privacidade",
+        content: `<p>O Lystro foi desenvolvido com sua privacidade em mente. Suas listas e fotos nunca saem do dispositivo. Para todos os detalhes, consulte nossa <a href="${PRIVACY_POLICY_URL}">Política de Privacidade</a>.</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. Todos os direitos reservados.`
+  },
+
+  ro: {
+    langLabel: "Limbă",
+    appName: "Lystro - Liste de Cumpărături",
+    title: "Asistență",
+    subtitle: "Lystro - Liste de Cumpărături",
+    intro: "Suntem aici să vă ajutăm. Dacă aveți întrebări sau probleme, consultați întrebările frecvente de mai jos sau contactați-ne direct.",
+    contact: {
+      icon: "✉️",
+      heading: "Contactați-ne",
+      body: `Trimiteți un e-mail la <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a> și vă vom răspunde cât mai curând posibil.`,
+      responseTime: "Timp de răspuns tipic: în 48 de ore.",
+      linkLabel: CONTACT_EMAIL
+    },
+    sections: [
+      {
+        heading: "Întrebări frecvente",
+        faq: [
+          {
+            q: "Cum pot restaura achizițiile după reinstalarea aplicației?",
+            a: `<p>Atingeți pictograma de setări de pe ecranul principal, apoi atingeți <strong>Restaurare achiziții</strong>. Achiziția dvs. va fi verificată prin App Store sau Google Play și reclamele vor fi eliminate automat. Asigurați-vă că sunteți conectat cu același ID Apple (iOS) sau cont Google (Android) cu care ați cumpărat inițial.</p>`
+          },
+          {
+            q: "Notificările nu funcționează — ce pot face?",
+            a: `<p>Accesați <strong>Setări → Notificări → Lystro</strong> pe dispozitivul dvs. iOS și asigurați-vă că notificările sunt activate. Dacă ați reinstalat aplicația, este posibil să fie nevoie să dezactivați și să reactivați notificările în aplicație pentru a înregistra din nou permisiunile.</p>`
+          },
+          {
+            q: "Cum schimb limba aplicației?",
+            a: `<p>Atingeți pictograma roată de pe ecranul principal pentru a deschide setările, apoi selectați limba dorită. Aplicația va reporni automat.</p>`
+          },
+          {
+            q: "Unde sunt stocate datele mele și sunt copiate de rezervă?",
+            a: `<p>Toate datele dvs. sunt stocate local pe dispozitiv. Datele nu sunt niciodată trimise către un server. Pe iOS, listele dvs. sunt incluse automat în copia de rezervă iCloud sau iTunes. Pe Android, sunt incluse în copia dvs. de rezervă Google (dacă este activată). Vor fi restaurate dacă schimbați sau reinstalați dispozitivul.</p>`
+          },
+          {
+            q: "Cum pot șterge toate datele mele?",
+            a: `<p>Dezinstalați Lystro de pe dispozitiv. Aceasta va elimina permanent toate listele, articolele și fotografiile dvs. Dacă aveți o copie de rezervă activată, datele pot fi restaurate la reinstalare.</p>`
+          },
+          {
+            q: "Aplicația se blochează sau nu funcționează corect. Ce pot face?",
+            a: `<p>Încercați următorii pași în ordine:</p><ol><li>Închideți forțat aplicația și redeschideți-o.</li><li>Asigurați-vă că aveți cea mai recentă versiune din App Store (iOS) sau Google Play (Android).</li><li>Reporniți dispozitivul.</li></ol><p>Dacă problema persistă, contactați-ne la <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.</p>`
+          }
+        ]
+      },
+      {
+        heading: "Confidențialitate",
+        content: `<p>Lystro a fost creat cu respectul față de confidențialitatea dvs. Listele și fotografiile dvs. nu părăsesc niciodată dispozitivul. Pentru toate detaliile, consultați <a href="${PRIVACY_POLICY_URL}">Politica de Confidențialitate</a>.</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. Toate drepturile rezervate.`
+  },
+
+  sk: {
+    langLabel: "Jazyk",
+    appName: "Lystro - Jednoduché Zoznamy",
+    title: "Podpora",
+    subtitle: "Lystro - Jednoduché Zoznamy",
+    intro: "Sme tu, aby sme vám pomohli. Ak máte otázky alebo problémy, pozrite si časté otázky nižšie alebo nás kontaktujte priamo.",
+    contact: {
+      icon: "✉️",
+      heading: "Kontaktujte nás",
+      body: `Napíšte nám na <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a> a odpovieme čo najskôr.`,
+      responseTime: "Typická doba odpovede: do 48 hodín.",
+      linkLabel: CONTACT_EMAIL
+    },
+    sections: [
+      {
+        heading: "Často kladené otázky",
+        faq: [
+          {
+            q: "Ako obnovím nákupy po preinštalovaní aplikácie?",
+            a: `<p>Klepnite na ikonu nastavení na hlavnej obrazovke a potom klepnite na <strong>Obnoviť nákupy</strong>. Nákup bude overený cez App Store alebo Google Play a reklamy budú automaticky odstránené. Uistite sa, že ste prihlásení s rovnakým Apple ID (iOS) alebo Google účtom (Android), s ktorým ste pôvodne nakupovali.</p>`
+          },
+          {
+            q: "Oznámenia nefungujú — čo mám robiť?",
+            a: `<p>Prejdite do <strong>Nastavenia → Oznámenia → Lystro</strong> na vašom zariadení so systémom iOS a uistite sa, že sú oznámenia povolené. Ak ste aplikáciu preinštalovali, možno budete musieť vypnúť a znovu zapnúť oznámenia v aplikácii, aby sa oprávnenia znovu zaregistrovali.</p>`
+          },
+          {
+            q: "Ako zmením jazyk aplikácie?",
+            a: `<p>Klepnite na ikonu ozubeného kolieska na hlavnej obrazovke, čím otvoríte nastavenia, a potom vyberte požadovaný jazyk. Aplikácia sa automaticky reštartuje.</p>`
+          },
+          {
+            q: "Kde sú uložené moje údaje a sú zálohované?",
+            a: `<p>Všetky vaše údaje sú uložené lokálne na zariadení. Údaje sa nikdy neodosielajú na server. Na iOS sú vaše zoznamy automaticky zahrnuté do zálohy iCloud alebo iTunes. Na Androide sú zahrnuté v zálohe Google (ak je povolená). Obnovia sa pri výmene alebo preinštalovaní zariadenia.</p>`
+          },
+          {
+            q: "Ako môžem odstrániť všetky svoje údaje?",
+            a: `<p>Odinštalujte Lystro zo zariadenia. Tým sa natrvalo odstránia všetky vaše zoznamy, položky a fotografie. Ak máte povolené zálohovanie, údaje je možné obnoviť pri preinštalovaní.</p>`
+          },
+          {
+            q: "Aplikácia padá alebo nefunguje správne. Čo mám robiť?",
+            a: `<p>Vyskúšajte nasledujúce kroky v uvedenom poradí:</p><ol><li>Vynútene zatvorte aplikáciu a znovu ju otvorte.</li><li>Uistite sa, že máte najnovšiu verziu z App Store (iOS) alebo Google Play (Android).</li><li>Reštartujte zariadenie.</li></ol><p>Ak problém pretrváva, kontaktujte nás na <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.</p>`
+          }
+        ]
+      },
+      {
+        heading: "Ochrana súkromia",
+        content: `<p>Lystro bol vytvorený s ohľadom na vaše súkromie. Vaše zoznamy a fotografie nikdy neopustia zariadenie. Podrobnosti nájdete v našich <a href="${PRIVACY_POLICY_URL}">Zásadách ochrany súkromia</a>.</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. Všetky práva vyhradené.`
+  },
+
+  fi: {
+    langLabel: "Kieli",
+    appName: "Lystro - Helpot Ostoslistat",
+    title: "Tuki",
+    subtitle: "Lystro - Helpot Ostoslistat",
+    intro: "Olemme täällä auttamassa. Selaa alla olevia usein kysyttyjä kysymyksiä tai ota yhteyttä suoraan — pyrimme vastaamaan 48 tunnin kuluessa.",
+    contact: {
+      icon: "✉️",
+      heading: "Ota yhteyttä",
+      body: "Onko sinulla kysymys, johon ei löydy vastausta alta, löysitkö virheen tai haluatko jakaa palautetta? Lähetä meille sähköpostia ja palaamme asiaan niin pian kuin mahdollista.",
+      responseTime: "Tyypillinen vastausaika: 48 tunnin kuluessa.",
+      linkLabel: CONTACT_EMAIL,
+    },
+    sections: [
+      {
+        heading: "Usein kysytyt kysymykset",
+        faq: [
+          {
+            q: "Kuinka palautan Poista mainokset -ostoksen?",
+            a: `<p>Avaa sovellus ja siirry kohtaan <strong>Tietoja</strong> (asetusikoni pääruudulla). Napauta <strong>Palauta ostokset</strong>. Ostos vahvistetaan App Storen tai Google Playn kautta ja mainokset poistetaan automaattisesti.</p>
+                <p>Varmista, että olet kirjautunut samalle Apple ID:lle (iOS) tai Google-tilille (Android) kuin alkuperäisessä ostossa.</p>`
+          },
+          {
+            q: "Ilmoitukset eivät toimi — mitä minun pitäisi tehdä?",
+            a: `<p>Tarkista seuraavat asiat:</p>
+                <ul>
+                  <li>Siirry laitteesi <strong>Asetukset → Ilmoitukset → Lystro</strong> -kohtaan ja varmista, että ilmoitukset ovat sallittuja.</li>
+                  <li>Varmista, että asettamasi muistutusaika on tulevaisuudessa.</li>
+                  <li>Jos olet äskettäin asentanut sovelluksen uudelleen, avaa se kerran rekisteröidäksesi ilmoitusluvat uudelleen.</li>
+                </ul>`
+          },
+          {
+            q: "Kuinka vaihdan sovelluksen kielen?",
+            a: `<p>Avaa <strong>Asetukset</strong> (napauta hammasrataskuvaketta pääruudulla) ja vieritä alas <strong>Kieli</strong>-osioon. Valitse haluamasi kieli — sovellus käynnistyy automaattisesti uudelleen muutoksen soveltamiseksi.</p>
+                <p>Lystro tukee 33 kieltä.</p>`
+          },
+          {
+            q: "Missä tietoni tallennetaan? Onko varmuuskopioita?",
+            a: `<p>Kaikki ostoslistasi, tuotteet, muistiinpanot ja kuvat tallennetaan paikallisesti laitteellesi. Tietoja ei koskaan lähetetä palvelimelle — ei tilejä eikä pilvisynkronointia.</p>
+                <p>Tietosi sisältyvät laitteesi tavalliseen iCloud- tai iTunes-varmuuskopioon (jos käytössä). Androidilla tiedot sisältyvät Google-varmuuskopioon (jos käytössä). Jos palautat laitteen varmuuskopiosta, Lystro-tietosi palautuvat mukana.</p>`
+          },
+          {
+            q: "Kuinka poistan kaikki tietoni?",
+            a: `<p>Voit poistaa yksittäisiä listoja tai tuotteita sovelluksessa. Kaikkien tietojen täydelliseen poistamiseen poista Lystro laitteeltasi — tämä poistaa pysyvästi kaikki paikallisesti tallennetut listat, tuotteet, kuvat ja asetukset.</p>`
+          },
+          {
+            q: "Sovellus kaatuu tai toimii odottamattomasti — mitä minun pitäisi tehdä?",
+            a: `<p>Kokeile seuraavia vaiheita:</p>
+                <ul>
+                  <li>Pakota sovellus sulkeutumaan ja avaa se uudelleen.</li>
+                  <li>Varmista, että käytät Lystron uusinta versiota App Storesta (iOS) tai Google Playsta (Android).</li>
+                  <li>Käynnistä laite uudelleen.</li>
+                </ul>
+                <p>Jos ongelma jatkuu, <a href="mailto:${CONTACT_EMAIL}">ota yhteyttä</a> kuvaamalla mitä tapahtui sekä laitteesi malli ja käyttöjärjestelmäversiosi. Tutkimme asian mahdollisimman nopeasti.</p>`
+          },
+        ]
+      },
+      {
+        heading: "Tietosuoja",
+        content: `<p>Lystro on suunniteltu yksityisyytesi huomioiden. Listasi ja kuvasi eivät koskaan poistu laitteeltasi. Lue kaikki yksityiskohdat <a href="${PRIVACY_POLICY_URL}">tietosuojakäytännöstämme</a>.</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. Kaikki oikeudet pidätetään.`
+  },
+
+  sv: {
+    langLabel: "Språk",
+    appName: "Lystro - Enkla Inköpslistor",
+    title: "Support",
+    subtitle: "Lystro - Enkla Inköpslistor",
+    intro: "Vi finns här för att hjälpa dig. Om du har frågor eller problem kan du läsa de vanliga frågorna nedan eller kontakta oss direkt.",
+    contact: {
+      icon: "✉️",
+      heading: "Kontakta oss",
+      body: `Skicka ett e-postmeddelande till <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a> så återkommer vi så snart som möjligt.`,
+      responseTime: "Typisk svarstid: inom 48 timmar.",
+      linkLabel: CONTACT_EMAIL
+    },
+    sections: [
+      {
+        heading: "Vanliga frågor",
+        faq: [
+          {
+            q: "Hur återställer jag mina köp efter att ha installerat om appen?",
+            a: `<p>Tryck på inställningsikonen på huvudskärmen och sedan på <strong>Återställ köp</strong>. Ditt köp verifieras via App Store eller Google Play och annonserna tas bort automatiskt. Se till att du är inloggad med samma Apple-ID (iOS) eller Google-konto (Android) som du använde vid det ursprungliga köpet.</p>`
+          },
+          {
+            q: "Aviseringar fungerar inte — vad kan jag göra?",
+            a: `<p>Gå till <strong>Inställningar → Aviseringar → Lystro</strong> på din iOS-enhet och kontrollera att aviseringar är aktiverade. Om du har installerat om appen kan du behöva stänga av och sedan slå på aviseringar i appen igen för att omregistrera behörigheterna.</p>`
+          },
+          {
+            q: "Hur ändrar jag appens språk?",
+            a: `<p>Tryck på kugghjulsikonen på huvudskärmen för att öppna inställningarna och välj önskat språk. Appen startar om automatiskt.</p>`
+          },
+          {
+            q: "Var lagras mina data och säkerhetskopieras de?",
+            a: `<p>All din data lagras lokalt på enheten. Data skickas aldrig till någon server. På iOS ingår dina listor automatiskt i din iCloud- eller iTunes-säkerhetskopia. På Android ingår de i din Google-säkerhetskopia (om aktiverad). De återställs om du byter eller installerar om enheten.</p>`
+          },
+          {
+            q: "Hur tar jag bort all min data?",
+            a: `<p>Avinstallera Lystro från din enhet. Det tar permanent bort alla dina listor, objekt och foton. Om säkerhetskopiering är aktiverad kan data återställas vid ominstallation.</p>`
+          },
+          {
+            q: "Appen kraschar eller fungerar inte korrekt. Vad kan jag göra?",
+            a: `<p>Prova följande steg i ordning:</p><ol><li>Tvångsstäng appen och öppna den igen.</li><li>Kontrollera att du har den senaste versionen från App Store (iOS) eller Google Play (Android).</li><li>Starta om enheten.</li></ol><p>Om problemet kvarstår, kontakta oss på <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.</p>`
+          }
+        ]
+      },
+      {
+        heading: "Integritet",
+        content: `<p>Lystro har skapats med din integritet i åtanke. Dina listor och foton lämnar aldrig enheten. För fullständig information, se vår <a href="${PRIVACY_POLICY_URL}">Integritetspolicy</a>.</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. Alla rättigheter förbehållna.`
+  },
+
+  vi: {
+    langLabel: "Ngôn ngữ",
+    appName: "Lystro - Danh Sách Mua Sắm",
+    title: "Hỗ trợ",
+    subtitle: "Lystro - Danh Sách Mua Sắm",
+    intro: "Chúng tôi luôn sẵn sàng hỗ trợ bạn. Nếu bạn có câu hỏi hoặc gặp sự cố, hãy xem các câu hỏi thường gặp bên dưới hoặc liên hệ trực tiếp với chúng tôi.",
+    contact: {
+      icon: "✉️",
+      heading: "Liên hệ với chúng tôi",
+      body: `Gửi email đến <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a> và chúng tôi sẽ phản hồi sớm nhất có thể.`,
+      responseTime: "Thời gian phản hồi thông thường: trong vòng 48 giờ.",
+      linkLabel: CONTACT_EMAIL
+    },
+    sections: [
+      {
+        heading: "Câu hỏi thường gặp",
+        faq: [
+          {
+            q: "Làm thế nào để khôi phục giao dịch mua sau khi cài đặt lại ứng dụng?",
+            a: `<p>Nhấn vào biểu tượng cài đặt trên màn hình chính, sau đó nhấn <strong>Khôi phục giao dịch mua</strong>. Giao dịch mua sẽ được xác minh qua App Store hoặc Google Play và quảng cáo sẽ bị xóa tự động. Đảm bảo rằng bạn đang đăng nhập bằng cùng Apple ID (iOS) hoặc tài khoản Google (Android) mà bạn đã dùng để mua ban đầu.</p>`
+          },
+          {
+            q: "Thông báo không hoạt động — tôi phải làm gì?",
+            a: `<p>Vào <strong>Cài đặt → Thông báo → Lystro</strong> trên thiết bị iOS của bạn và đảm bảo thông báo đã được bật. Nếu bạn đã cài đặt lại ứng dụng, bạn có thể cần tắt rồi bật lại thông báo trong ứng dụng để đăng ký lại quyền.</p>`
+          },
+          {
+            q: "Làm thế nào để thay đổi ngôn ngữ của ứng dụng?",
+            a: `<p>Nhấn vào biểu tượng bánh răng trên màn hình chính để mở cài đặt, sau đó chọn ngôn ngữ bạn muốn. Ứng dụng sẽ tự động khởi động lại.</p>`
+          },
+          {
+            q: "Dữ liệu của tôi được lưu trữ ở đâu và có được sao lưu không?",
+            a: `<p>Tất cả dữ liệu của bạn được lưu trữ cục bộ trên thiết bị. Dữ liệu không bao giờ được gửi đến máy chủ. Trên iOS, danh sách của bạn được tự động đưa vào bản sao lưu iCloud hoặc iTunes. Trên Android, chúng được đưa vào bản sao lưu Google của bạn (nếu được bật). Chúng sẽ được khôi phục khi bạn thay thế hoặc cài đặt lại thiết bị.</p>`
+          },
+          {
+            q: "Làm thế nào để xóa tất cả dữ liệu của tôi?",
+            a: `<p>Gỡ cài đặt Lystro khỏi thiết bị của bạn. Thao tác này sẽ xóa vĩnh viễn tất cả danh sách, mục và ảnh của bạn. Nếu sao lưu được bật, dữ liệu có thể được khôi phục khi cài đặt lại.</p>`
+          },
+          {
+            q: "Ứng dụng bị treo hoặc không hoạt động đúng. Tôi phải làm gì?",
+            a: `<p>Hãy thử các bước sau theo thứ tự:</p><ol><li>Buộc đóng ứng dụng và mở lại.</li><li>Đảm bảo bạn có phiên bản mới nhất từ App Store (iOS) hoặc Google Play (Android).</li><li>Khởi động lại thiết bị.</li></ol><p>Nếu sự cố vẫn tiếp diễn, hãy liên hệ với chúng tôi tại <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.</p>`
+          }
+        ]
+      },
+      {
+        heading: "Quyền riêng tư",
+        content: `<p>Lystro được xây dựng với sự tôn trọng quyền riêng tư của bạn. Danh sách và ảnh của bạn không bao giờ rời khỏi thiết bị. Để biết chi tiết đầy đủ, hãy xem <a href="${PRIVACY_POLICY_URL}">Chính sách Quyền riêng tư</a> của chúng tôi.</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. Bảo lưu mọi quyền.`
+  },
+
+  tr: {
+    langLabel: "Dil",
+    appName: "Lystro - Kolay Alışveriş",
+    title: "Destek",
+    subtitle: "Lystro - Kolay Alışveriş",
+    intro: "Yardım etmek için buradayız. Sorularınız veya sorunlarınız varsa aşağıdaki sıkça sorulan sorulara göz atın ya da doğrudan bizimle iletişime geçin.",
+    contact: {
+      icon: "✉️",
+      heading: "Bize Ulaşın",
+      body: `<a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a> adresine e-posta gönderin, en kısa sürede yanıt verelim.`,
+      responseTime: "Tipik yanıt süresi: 48 saat içinde.",
+      linkLabel: CONTACT_EMAIL
+    },
+    sections: [
+      {
+        heading: "Sıkça Sorulan Sorular",
+        faq: [
+          {
+            q: "Uygulamayı yeniden yükledikten sonra satın alımlarımı nasıl geri yüklerim?",
+            a: `<p>Ana ekrandaki ayarlar simgesine dokunun ve ardından <strong>Satın Alımları Geri Yükle</strong> seçeneğine dokunun. Satın alma işleminiz App Store veya Google Play üzerinden doğrulanacak ve reklamlar otomatik olarak kaldırılacaktır. Başlangıçta satın alma işlemi yaptığınız Apple ID (iOS) veya Google hesabınızla (Android) giriş yaptığınızdan emin olun.</p>`
+          },
+          {
+            q: "Bildirimler çalışmıyor — ne yapabilirim?",
+            a: `<p>iOS cihazınızda <strong>Ayarlar → Bildirimler → Lystro</strong> yolunu izleyin ve bildirimlerin etkin olduğundan emin olun. Uygulamayı yeniden yüklediyseniz, izinleri yeniden kaydetmek için uygulama içinde bildirimleri kapatıp açmanız gerekebilir.</p>`
+          },
+          {
+            q: "Uygulamanın dilini nasıl değiştirebilirim?",
+            a: `<p>Ayarları açmak için ana ekrandaki dişli simgesine dokunun ve ardından istediğiniz dili seçin. Uygulama otomatik olarak yeniden başlatılacaktır.</p>`
+          },
+          {
+            q: "Verilerim nerede saklanıyor ve yedekleniyor mu?",
+            a: `<p>Tüm verileriniz cihazda yerel olarak saklanır. Veriler hiçbir zaman bir sunucuya gönderilmez. iOS'ta listeleriniz otomatik olarak iCloud veya iTunes yedeğinize dahil edilir. Android'de ise Google yedeğinize dahil edilir (etkinleştirilmişse). Cihazınızı değiştirdiğinizde veya yeniden yüklediğinizde geri yüklenebilir.</p>`
+          },
+          {
+            q: "Tüm verilerimi nasıl silebilirim?",
+            a: `<p>Lystro'yu cihazınızdan kaldırın. Bu işlem tüm listelerinizi, öğelerinizi ve fotoğraflarınızı kalıcı olarak siler. Yedekleme etkinse, yeniden yüklemede veriler geri yüklenebilir.</p>`
+          },
+          {
+            q: "Uygulama çöküyor veya düzgün çalışmıyor. Ne yapabilirim?",
+            a: `<p>Aşağıdaki adımları sırayla deneyin:</p><ol><li>Uygulamayı zorla kapatın ve yeniden açın.</li><li>App Store'dan (iOS) veya Google Play'den (Android) en son sürüme sahip olduğunuzdan emin olun.</li><li>Cihazınızı yeniden başlatın.</li></ol><p>Sorun devam ederse <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a> adresinden bizimle iletişime geçin.</p>`
+          }
+        ]
+      },
+      {
+        heading: "Gizlilik",
+        content: `<p>Lystro, gizliliğiniz göz önünde bulundurularak tasarlanmıştır. Listeleriniz ve fotoğraflarınız hiçbir zaman cihazınızı terk etmez. Tüm ayrıntılar için <a href="${PRIVACY_POLICY_URL}">Gizlilik Politikamızı</a> inceleyin.</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. Tüm hakları saklıdır.`
+  },
+
+  el: {
+    langLabel: "Γλώσσα",
+    appName: "Lystro - Εύκολες Λίστες Αγορών",
+    title: "Υποστήριξη",
+    subtitle: "Lystro - Εύκολες Λίστες Αγορών",
+    intro: "Είμαστε εδώ για να βοηθήσουμε. Δείτε τις συχνές ερωτήσεις παρακάτω ή επικοινωνήστε μαζί μας απευθείας — στοχεύουμε να απαντάμε εντός 48 ωρών.",
+    contact: {
+      icon: "✉️",
+      heading: "Επικοινωνήστε μαζί μας",
+      body: "Έχετε μια ερώτηση που δεν απαντάται παρακάτω, βρήκατε κάποιο σφάλμα ή θέλετε να μοιραστείτε σχόλια; Στείλτε μας email και θα επικοινωνήσουμε μαζί σας το συντομότερο.",
+      responseTime: "Τυπικός χρόνος απόκρισης: εντός 48 ωρών.",
+      linkLabel: CONTACT_EMAIL,
+    },
+    sections: [
+      {
+        heading: "Συχνές ερωτήσεις",
+        faq: [
+          {
+            q: "Πώς να επαναφέρω την αγορά Κατάργηση διαφημίσεων;",
+            a: `<p>Ανοίξτε την εφαρμογή και μεταβείτε στην ενότητα <strong>Πληροφορίες</strong> (εικονίδιο ρυθμίσεων στην κύρια οθόνη). Πατήστε <strong>Επαναφορά αγορών</strong>. Η αγορά επαληθεύεται μέσω App Store ή Google Play και οι διαφημίσεις αφαιρούνται αυτόματα.</p>
+                <p>Βεβαιωθείτε ότι είστε συνδεδεμένοι με το ίδιο Apple ID (iOS) ή λογαριασμό Google (Android) που χρησιμοποιήθηκε κατά την αρχική αγορά.</p>`
+          },
+          {
+            q: "Οι ειδοποιήσεις δεν λειτουργούν — τι να κάνω;",
+            a: `<p>Ελέγξτε τα εξής:</p>
+                <ul>
+                  <li>Μεταβείτε στις <strong>Ρυθμίσεις → Ειδοποιήσεις → Lystro</strong> και βεβαιωθείτε ότι οι ειδοποιήσεις είναι ενεργοποιημένες.</li>
+                  <li>Βεβαιωθείτε ότι η ώρα υπενθύμισης που έχετε ορίσει είναι στο μέλλον.</li>
+                  <li>Αν επανεγκαταστήσατε πρόσφατα την εφαρμογή, ανοίξτε την μία φορά για επαναχορήγηση δικαιωμάτων ειδοποιήσεων.</li>
+                </ul>`
+          },
+          {
+            q: "Πώς να αλλάξω τη γλώσσα της εφαρμογής;",
+            a: `<p>Ανοίξτε τις <strong>Ρυθμίσεις</strong> (πατήστε το εικονίδιο γρανατιού στην κύρια οθόνη) και κυλήστε προς τα κάτω στην ενότητα <strong>Γλώσσα</strong>. Επιλέξτε τη γλώσσα που προτιμάτε — η εφαρμογή επανεκκινεί αυτόματα για να εφαρμοστεί η αλλαγή.</p>
+                <p>Το Lystro υποστηρίζει 33 γλώσσες.</p>`
+          },
+          {
+            q: "Πού αποθηκεύονται τα δεδομένα μου; Δημιουργούνται αντίγραφα ασφαλείας;",
+            a: `<p>Όλες οι λίστες αγορών, τα είδη, οι σημειώσεις και οι φωτογραφίες σας αποθηκεύονται τοπικά στη συσκευή σας. Δεν αποστέλλονται ποτέ δεδομένα σε διακομιστή — δεν υπάρχουν λογαριασμοί ούτε συγχρονισμός cloud.</p>
+                <p>Τα δεδομένα σας περιλαμβάνονται στο τυπικό αντίγραφο ασφαλείας iCloud ή iTunes της συσκευής σας (εάν έχει ενεργοποιηθεί). Στο Android, περιλαμβάνονται στο αντίγραφο ασφαλείας Google (εάν έχει ενεργοποιηθεί). Αν επαναφέρετε τη συσκευή σας από αντίγραφο ασφαλείας, τα δεδομένα Lystro θα επαναφερθούν μαζί.</p>`
+          },
+          {
+            q: "Πώς να διαγράψω όλα τα δεδομένα μου;",
+            a: `<p>Μπορείτε να διαγράψετε μεμονωμένες λίστες ή είδη μέσα από την εφαρμογή. Για να αφαιρέσετε όλα τα δεδομένα, απεγκαταστήστε το Lystro από τη συσκευή σας — αυτό διαγράφει μόνιμα όλες τις τοπικά αποθηκευμένες λίστες, είδη, φωτογραφίες και ρυθμίσεις.</p>`
+          },
+          {
+            q: "Η εφαρμογή κολλάει ή συμπεριφέρεται απρόσμενα — τι να κάνω;",
+            a: `<p>Δοκιμάστε τα παρακάτω βήματα:</p>
+                <ul>
+                  <li>Αναγκαστικά κλείστε την εφαρμογή και ανοίξτε την ξανά.</li>
+                  <li>Βεβαιωθείτε ότι χρησιμοποιείτε την τελευταία έκδοση του Lystro από το App Store (iOS) ή Google Play (Android).</li>
+                  <li>Επανεκκινήστε τη συσκευή σας.</li>
+                </ul>
+                <p>Αν το πρόβλημα επιμένει, <a href="mailto:${CONTACT_EMAIL}">επικοινωνήστε μαζί μας</a> με περιγραφή του τι συνέβη και τη συσκευή και την έκδοση λειτουργικού συστήματος που χρησιμοποιείτε. Θα το διερευνήσουμε το συντομότερο δυνατό.</p>`
+          },
+        ]
+      },
+      {
+        heading: "Απόρρητο",
+        content: `<p>Το Lystro είναι σχεδιασμένο με γνώμονα το απόρρητό σας. Οι λίστες και οι φωτογραφίες σας δεν φεύγουν ποτέ από τη συσκευή σας. Για λεπτομέρειες, δείτε την <a href="${PRIVACY_POLICY_URL}">Πολιτική Απορρήτου</a> μας.</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. Με επιφύλαξη παντός δικαιώματος.`
+  },
+
+  ru: {
+    langLabel: "Язык",
+    appName: "Lystro - Простые Покупки",
+    title: "Поддержка",
+    subtitle: "Lystro - Простые Покупки",
+    intro: "Мы готовы помочь. Если у вас возникли вопросы или проблемы, ознакомьтесь с часто задаваемыми вопросами ниже или свяжитесь с нами напрямую.",
+    contact: {
+      icon: "✉️",
+      heading: "Связаться с нами",
+      body: `Напишите нам на <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>, и мы ответим как можно скорее.`,
+      responseTime: "Типичное время ответа: в течение 48 часов.",
+      linkLabel: CONTACT_EMAIL
+    },
+    sections: [
+      {
+        heading: "Часто задаваемые вопросы",
+        faq: [
+          {
+            q: "Как восстановить покупки после переустановки приложения?",
+            a: `<p>Нажмите значок настроек на главном экране, затем нажмите <strong>Восстановить покупки</strong>. Убедитесь, что вы Покупка будет проверена через App Store или Google Play, и реклама будет автоматически удалена. Убедитесь, что вы вошли с тем же Apple ID (iOS) или аккаунтом Google (Android), который использовался при покупке.</p>`
+          },
+          {
+            q: "Уведомления не работают — что делать?",
+            a: `<p>Перейдите в <strong>Настройки → Уведомления → Lystro</strong> на вашем устройстве iOS и убедитесь, что уведомления включены. Если вы переустанавливали приложение, возможно, потребуется отключить и снова включить уведомления в приложении для повторной регистрации разрешений.</p>`
+          },
+          {
+            q: "Как изменить язык приложения?",
+            a: `<p>Нажмите значок шестерёнки на главном экране, чтобы открыть настройки, затем выберите нужный язык. Приложение перезапустится автоматически.</p>`
+          },
+          {
+            q: "Где хранятся мои данные и создаются ли их резервные копии?",
+            a: `<p>Все данные хранятся локально на устройстве. Данные никогда не отправляются на сервер. На iOS ваши списки автоматически включаются в резервную копию iCloud или iTunes. На Android они включаются в резервную копию Google (если включена). Они будут восстановлены при смене или переустановке устройства.</p>`
+          },
+          {
+            q: "Как удалить все мои данные?",
+            a: `<p>Удалите Lystro с устройства. Это навсегда удалит все ваши списки, элементы и фотографии. Если резервное копирование включено, данные могут быть восстановлены при переустановке.</p>`
+          },
+          {
+            q: "Приложение вылетает или работает некорректно. Что делать?",
+            a: `<p>Попробуйте следующие шаги по порядку:</p><ol><li>Принудительно закройте приложение и откройте его снова.</li><li>Убедитесь, что у вас установлена последняя версия из App Store (iOS) или Google Play (Android).</li><li>Перезагрузите устройство.</li></ol><p>Если проблема не устранена, свяжитесь с нами по адресу <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.</p>`
+          }
+        ]
+      },
+      {
+        heading: "Конфиденциальность",
+        content: `<p>Lystro создан с уважением к вашей конфиденциальности. Ваши списки и фотографии никогда не покидают устройство. Подробнее см. в нашей <a href="${PRIVACY_POLICY_URL}">Политике конфиденциальности</a>.</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. Все права защищены.`
+  },
+
+  uk: {
+    langLabel: "Мова",
+    appName: "Lystro - Прості Списки Покупок",
+    title: "Підтримка",
+    subtitle: "Lystro - Прості Списки Покупок",
+    intro: "Ми тут, щоб допомогти вам. Якщо у вас є запитання або проблеми, перегляньте поширені запитання нижче або зв'яжіться з нами безпосередньо.",
+    contact: {
+      icon: "✉️",
+      heading: "Зв'язатися з нами",
+      body: `Напишіть нам на <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>, і ми відповімо якнайшвидше.`,
+      responseTime: "Типовий час відповіді: протягом 48 годин.",
+      linkLabel: CONTACT_EMAIL
+    },
+    sections: [
+      {
+        heading: "Поширені запитання",
+        faq: [
+          {
+            q: "Як відновити покупки після повторного встановлення додатка?",
+            a: `<p>Торкніться значка налаштувань на головному екрані, а потім торкніться <strong>Відновити покупки</strong>. Переконайтеся, що Покупку буде підтверджено через App Store або Google Play, і рекламу буде автоматично видалено. Переконайтеся, що ви увійшли з тим самим Apple ID (iOS) або обліковим записом Google (Android), який використовувався під час початкової покупки.</p>`
+          },
+          {
+            q: "Сповіщення не працюють — що робити?",
+            a: `<p>Перейдіть до <strong>Налаштування → Сповіщення → Lystro</strong> на вашому пристрої iOS і переконайтеся, що сповіщення увімкнено. Якщо ви перевстановили додаток, можливо, вам доведеться вимкнути та знову ввімкнути сповіщення в додатку, щоб повторно зареєструвати дозволи.</p>`
+          },
+          {
+            q: "Як змінити мову додатка?",
+            a: `<p>Торкніться значка шестерні на головному екрані, щоб відкрити налаштування, а потім виберіть потрібну мову. Додаток автоматично перезапуститься.</p>`
+          },
+          {
+            q: "Де зберігаються мої дані та чи створюються резервні копії?",
+            a: `<p>Усі ваші дані зберігаються локально на пристрої. Дані ніколи не надсилаються на сервер. На iOS ваші списки автоматично включаються до резервної копії iCloud або iTunes. На Android вони включаються до резервної копії Google (якщо увімкнено). Вони будуть відновлені при заміні або переустановленні пристрою.</p>`
+          },
+          {
+            q: "Як видалити всі мої дані?",
+            a: `<p>Видаліть Lystro з пристрою. Це назавжди видалить усі ваші списки, елементи та фотографії. Якщо резервне копіювання увімкнено, дані можна буде відновити при повторному встановленні.</p>`
+          },
+          {
+            q: "Додаток вилітає або працює некоректно. Що робити?",
+            a: `<p>Спробуйте наступні кроки по порядку:</p><ol><li>Примусово закрийте додаток і відкрийте його знову.</li><li>Переконайтеся, що у вас встановлена остання версія з App Store (iOS) або Google Play (Android).</li><li>Перезавантажте пристрій.</li></ol><p>Якщо проблема не зникає, зв'яжіться з нами за адресою <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a>.</p>`
+          }
+        ]
+      },
+      {
+        heading: "Конфіденційність",
+        content: `<p>Lystro створено з урахуванням вашої конфіденційності. Ваші списки та фотографії ніколи не залишають пристрій. Детальніше читайте в нашій <a href="${PRIVACY_POLICY_URL}">Політиці конфіденційності</a>.</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. Усі права захищені.`
+  },
+
+  hi: {
+    langLabel: "भाषा",
+    appName: "Lystro - आसान शॉपिंग सूची",
+    title: "सहायता",
+    subtitle: "Lystro - आसान शॉपिंग सूची",
+    intro: "हम यहाँ मदद के लिए हैं। नीचे दिए गए अक्सर पूछे जाने वाले प्रश्नों को देखें या सीधे हमसे संपर्क करें — हम 48 घंटों के भीतर जवाब देने का प्रयास करते हैं।",
+    contact: {
+      icon: "✉️",
+      heading: "हमसे संपर्क करें",
+      body: "कोई ऐसा प्रश्न जिसका उत्तर नीचे नहीं है, कोई बग मिला या फीडबैक देना चाहते हैं? हमें ईमेल करें और हम जल्द से जल्द जवाब देंगे।",
+      responseTime: "सामान्य प्रतिक्रिया समय: 48 घंटों के भीतर।",
+      linkLabel: CONTACT_EMAIL,
+    },
+    sections: [
+      {
+        heading: "अक्सर पूछे जाने वाले प्रश्न",
+        faq: [
+          {
+            q: "विज्ञापन हटाएं की खरीदारी कैसे पुनर्स्थापित करें?",
+            a: `<p>ऐप खोलें और मुख्य स्क्रीन पर सेटिंग्स आइकन से <strong>के बारे में</strong> पर जाएं। <strong>खरीदारी पुनर्स्थापित करें</strong> पर टैप करें। आपकी खरीदारी App Store या Google Play के माध्यम से सत्यापित होगी और विज्ञापन स्वतः हट जाएंगे।</p>
+                <p>सुनिश्चित करें कि आप उसी Apple ID (iOS) या Google खाते (Android) से साइन इन हैं जिसका उपयोग मूल खरीदारी के समय किया गया था।</p>`
+          },
+          {
+            q: "नोटिफिकेशन काम नहीं कर रहे — क्या करें?",
+            a: `<p>निम्नलिखित जाँचें:</p>
+                <ul>
+                  <li><strong>सेटिंग्स → नोटिफिकेशन → Lystro</strong> पर जाएं और सुनिश्चित करें कि नोटिफिकेशन की अनुमति है।</li>
+                  <li>सुनिश्चित करें कि आपने जो रिमाइंडर समय सेट किया है वह भविष्य में है।</li>
+                  <li>यदि आपने हाल ही में ऐप को पुनः इंस्टॉल किया है, तो नोटिफिकेशन अनुमतियाँ फिर से पंजीकृत करने के लिए इसे एक बार खोलें।</li>
+                </ul>`
+          },
+          {
+            q: "ऐप की भाषा कैसे बदलें?",
+            a: `<p><strong>सेटिंग्स</strong> खोलें (मुख्य स्क्रीन पर गियर आइकन टैप करें) और <strong>भाषा</strong> सेक्शन तक स्क्रॉल करें। अपनी पसंदीदा भाषा चुनें — ऐप बदलाव लागू करने के लिए स्वचालित रूप से पुनः प्रारंभ होगी।</p>
+                <p>Lystro 33 भाषाओं को सपोर्ट करता है।</p>`
+          },
+          {
+            q: "मेरा डेटा कहाँ स्टोर है? क्या बैकअप होता है?",
+            a: `<p>आपकी सभी शॉपिंग लिस्ट, आइटम, नोट्स और फ़ोटो आपके डिवाइस पर लोकल रूप से स्टोर हैं। कोई भी डेटा कभी सर्वर पर नहीं भेजा जाता — कोई अकाउंट नहीं, कोई क्लाउड सिंक नहीं।</p>
+                <p>आपका डेटा आपके डिवाइस के मानक iCloud या iTunes बैकअप में शामिल है (यदि सक्षम है)। Android पर, डेटा आपके Google बैकअप में शामिल होता है (यदि सक्षम है)। यदि आप बैकअप से डिवाइस रिस्टोर करते हैं, तो Lystro डेटा भी रिस्टोर हो जाएगा।</p>`
+          },
+          {
+            q: "सभी डेटा कैसे डिलीट करें?",
+            a: `<p>आप ऐप के भीतर से अलग-अलग लिस्ट या आइटम डिलीट कर सकते हैं। सभी डेटा पूरी तरह हटाने के लिए, अपने डिवाइस से Lystro को अनइंस्टॉल करें — इससे सभी लोकल स्टोर लिस्ट, आइटम, फ़ोटो और सेटिंग्स स्थायी रूप से डिलीट हो जाएंगे।</p>`
+          },
+          {
+            q: "ऐप क्रैश हो रही है या ठीक से काम नहीं कर रही — क्या करें?",
+            a: `<p>निम्नलिखित चरण आज़माएं:</p>
+                <ul>
+                  <li>ऐप को फोर्स-क्लोज़ करें और फिर से खोलें।</li>
+                  <li>सुनिश्चित करें कि आप App Store (iOS) या Google Play (Android) से Lystro का नवीनतम संस्करण चला रहे हैं।</li>
+                  <li>अपना डिवाइस रीस्टार्ट करें।</li>
+                </ul>
+                <p>यदि समस्या बनी रहती है, तो <a href="mailto:${CONTACT_EMAIL}">हमसे संपर्क करें</a> और बताएं कि क्या हुआ तथा आप कौन सा डिवाइस और OS संस्करण उपयोग कर रहे हैं। हम जल्द से जल्द जांच करेंगे।</p>`
+          },
+        ]
+      },
+      {
+        heading: "गोपनीयता",
+        content: `<p>Lystro आपकी गोपनीयता को ध्यान में रखकर डिज़ाइन किया गया है। आपकी लिस्ट और फ़ोटो कभी भी आपके डिवाइस से बाहर नहीं जाते। पूरी जानकारी के लिए हमारी <a href="${PRIVACY_POLICY_URL}">गोपनीयता नीति</a> देखें।</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. सर्वाधिकार सुरक्षित।`
+  },
+
+  th: {
+    langLabel: "ภาษา",
+    appName: "Lystro - รายการซื้อของง่ายๆ",
+    title: "ความช่วยเหลือ",
+    subtitle: "Lystro - รายการซื้อของง่ายๆ",
+    intro: "เราพร้อมช่วยเหลือคุณ หากมีคำถามหรือปัญหา โปรดดูคำถามที่พบบ่อยด้านล่างหรือติดต่อเราโดยตรง",
+    contact: {
+      icon: "✉️",
+      heading: "ติดต่อเรา",
+      body: `ส่งอีเมลมาที่ <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a> แล้วเราจะตอบกลับโดยเร็วที่สุด`,
+      responseTime: "ระยะเวลาตอบกลับโดยทั่วไป: ภายใน 48 ชั่วโมง",
+      linkLabel: CONTACT_EMAIL
+    },
+    sections: [
+      {
+        heading: "คำถามที่พบบ่อย",
+        faq: [
+          {
+            q: "ฉันจะกู้คืนการซื้อหลังจากติดตั้งแอปใหม่ได้อย่างไร?",
+            a: `<p>แตะไอคอนการตั้งค่าบนหน้าจอหลัก จากนั้นแตะ <strong>กู้คืนการซื้อ</strong> ตรวจสอบให้แน่ใจว่าคุณเข้าสู่ระบบด้วย การซื้อของคุณจะถูกตรวจสอบผ่าน App Store หรือ Google Play และโฆษณาจะถูกลบออกโดยอัตโนมัติ ตรวจสอบให้แน่ใจว่าคุณเข้าสู่ระบบด้วย Apple ID (iOS) หรือบัญชี Google (Android) เดียวกับที่ใช้ซื้อในครั้งแรก</p>`
+          },
+          {
+            q: "การแจ้งเตือนไม่ทำงาน — ฉันควรทำอย่างไร?",
+            a: `<p>ไปที่ <strong>การตั้งค่า → การแจ้งเตือน → Lystro</strong> บนอุปกรณ์ iOS ของคุณ และตรวจสอบให้แน่ใจว่าเปิดใช้การแจ้งเตือนแล้ว หากคุณติดตั้งแอปใหม่ คุณอาจต้องปิดและเปิดการแจ้งเตือนภายในแอปอีกครั้งเพื่อลงทะเบียนสิทธิ์ใหม่</p>`
+          },
+          {
+            q: "ฉันจะเปลี่ยนภาษาของแอปได้อย่างไร?",
+            a: `<p>แตะไอคอนฟันเฟืองบนหน้าจอหลักเพื่อเปิดการตั้งค่า จากนั้นเลือกภาษาที่ต้องการ แอปจะรีสตาร์ทโดยอัตโนมัติ</p>`
+          },
+          {
+            q: "ข้อมูลของฉันถูกเก็บไว้ที่ไหน และมีการสำรองข้อมูลหรือไม่?",
+            a: `<p>ข้อมูลทั้งหมดของคุณถูกเก็บไว้ในเครื่องบนอุปกรณ์ ข้อมูลจะไม่ถูกส่งไปยังเซิร์ฟเวอร์ใดๆ บน iOS รายการของคุณจะถูกรวมอยู่ในข้อมูลสำรอง iCloud หรือ iTunes โดยอัตโนมัติ บน Android จะถูกรวมอยู่ในข้อมูลสำรอง Google ของคุณ (หากเปิดใช้งาน) คุณสามารถกู้คืนได้เมื่อเปลี่ยนหรือติดตั้งอุปกรณ์ใหม่</p>`
+          },
+          {
+            q: "ฉันจะลบข้อมูลทั้งหมดของฉันได้อย่างไร?",
+            a: `<p>ถอนการติดตั้ง Lystro จากอุปกรณ์ของคุณ ซึ่งจะลบรายการ รายการสินค้า และรูปภาพทั้งหมดของคุณอย่างถาวร หากเปิดใช้งานการสำรองข้อมูล ข้อมูลอาจได้รับการกู้คืนเมื่อติดตั้งใหม่</p>`
+          },
+          {
+            q: "แอปค้างหรือทำงานไม่ถูกต้อง ฉันควรทำอย่างไร?",
+            a: `<p>ลองทำตามขั้นตอนเหล่านี้ตามลำดับ:</p><ol><li>บังคับปิดแอปแล้วเปิดใหม่อีกครั้ง</li><li>ตรวจสอบให้แน่ใจว่าคุณมีเวอร์ชันล่าสุดจาก App Store (iOS) หรือ Google Play (Android)</li><li>รีสตาร์ทอุปกรณ์</li></ol><p>หากปัญหายังคงอยู่ ติดต่อเราที่ <a href="mailto:${CONTACT_EMAIL}">${CONTACT_EMAIL}</a></p>`
+          }
+        ]
+      },
+      {
+        heading: "ความเป็นส่วนตัว",
+        content: `<p>Lystro ถูกสร้างขึ้นโดยคำนึงถึงความเป็นส่วนตัวของคุณ รายการและรูปภาพของคุณจะไม่ออกจากอุปกรณ์เด็ดขาด สำหรับรายละเอียดทั้งหมด โปรดดู<a href="${PRIVACY_POLICY_URL}">นโยบายความเป็นส่วนตัว</a>ของเรา</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. สงวนลิขสิทธิ์ทั้งหมด.`
+  },
+
+  ko: {
+    langLabel: "언어",
+    appName: "Lystro - 쉬운 쇼핑 목록",
+    title: "고객 지원",
+    subtitle: "Lystro - 쉬운 쇼핑 목록",
+    intro: "도움이 필요하시면 언제든지 문의하세요. 아래 자주 묻는 질문을 확인하시거나 직접 연락 주시면 48시간 이내에 답변드리겠습니다.",
+    contact: {
+      icon: "✉️",
+      heading: "문의하기",
+      body: "아래에 답변이 없는 질문이 있거나 버그를 발견하셨거나 피드백을 공유하고 싶으신가요? 이메일을 보내 주시면 최대한 빨리 답변드리겠습니다.",
+      responseTime: "일반적인 응답 시간: 48시간 이내.",
+      linkLabel: CONTACT_EMAIL,
+    },
+    sections: [
+      {
+        heading: "자주 묻는 질문",
+        faq: [
+          {
+            q: "광고 제거 구매를 복원하려면 어떻게 하나요?",
+            a: `<p>앱을 열고 메인 화면의 설정 아이콘을 통해 <strong>정보</strong> 페이지로 이동합니다. <strong>구매 복원</strong>을 탭하세요. App Store 또는 Google Play에서 구매가 확인되고 광고가 자동으로 제거됩니다.</p>
+                <p>처음 구매 시 사용한 동일한 Apple ID (iOS) 또는 Google 계정 (Android)으로 로그인되어 있는지 확인하세요.</p>`
+          },
+          {
+            q: "알림이 작동하지 않아요 — 어떻게 해야 하나요?",
+            a: `<p>다음을 확인해 주세요:</p>
+                <ul>
+                  <li>기기의 <strong>설정 → 알림 → Lystro</strong>로 이동하여 알림이 허용되어 있는지 확인합니다.</li>
+                  <li>설정한 알림 시간이 미래인지 확인합니다.</li>
+                  <li>최근 앱을 재설치한 경우, 알림 권한을 다시 등록하기 위해 앱을 한 번 열어주세요.</li>
+                </ul>`
+          },
+          {
+            q: "앱 언어를 변경하려면 어떻게 하나요?",
+            a: `<p><strong>설정</strong>(메인 화면의 기어 아이콘 탭)을 열고 <strong>언어</strong> 섹션으로 스크롤합니다. 원하는 언어를 선택하면 앱이 자동으로 재시작되어 변경 사항이 적용됩니다.</p>
+                <p>Lystro는 33개 언어를 지원합니다.</p>`
+          },
+          {
+            q: "내 데이터는 어디에 저장되나요? 백업이 되나요?",
+            a: `<p>모든 쇼핑 목록, 항목, 메모, 사진은 기기에 로컬로 저장됩니다. 데이터는 서버로 전송되지 않습니다 — 계정도 없고 클라우드 동기화도 없습니다.</p>
+                <p>데이터는 기기의 표준 iCloud 또는 iTunes 백업에 포함됩니다(활성화된 경우). Android에서는 Google 백업에 포함됩니다(활성화된 경우). 백업에서 기기를 복원하면 Lystro 데이터도 함께 복원됩니다.</p>`
+          },
+          {
+            q: "모든 데이터를 삭제하려면 어떻게 하나요?",
+            a: `<p>앱 내에서 개별 목록이나 항목을 삭제할 수 있습니다. 모든 데이터를 완전히 제거하려면 기기에서 Lystro를 삭제하세요 — 로컬에 저장된 모든 목록, 항목, 사진, 설정이 영구적으로 삭제됩니다.</p>`
+          },
+          {
+            q: "앱이 충돌하거나 예기치 않게 작동해요 — 어떻게 해야 하나요?",
+            a: `<p>다음 단계를 시도해 보세요:</p>
+                <ul>
+                  <li>앱을 강제 종료하고 다시 여세요.</li>
+                  <li>App Store (iOS) 또는 Google Play (Android)에서 Lystro의 최신 버전을 사용하고 있는지 확인하세요.</li>
+                  <li>기기를 재시작하세요.</li>
+                </ul>
+                <p>문제가 지속되면 발생한 상황, 사용 중인 기기와 OS 버전을 포함하여 <a href="mailto:${CONTACT_EMAIL}">문의해 주세요</a>. 최대한 빨리 조사하겠습니다.</p>`
+          },
+        ]
+      },
+      {
+        heading: "개인정보 보호",
+        content: `<p>Lystro는 개인정보 보호를 최우선으로 설계되었습니다. 목록과 사진은 기기를 절대 떠나지 않습니다. 자세한 내용은 <a href="${PRIVACY_POLICY_URL}">개인정보 처리방침</a>을 확인하세요.</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. 모든 권리 보유.`
+  },
+
+  zh: {
+    langLabel: "语言",
+    appName: "Lystro - 简单购物清单",
+    title: "帮助",
+    subtitle: "Lystro - 简单购物清单",
+    intro: "我们随时为您提供帮助。请查看下方的常见问题，或直接与我们联系——我们通常在48小时内回复。",
+    contact: {
+      icon: "✉️",
+      heading: "联系我们",
+      body: "有未解答的问题、发现了错误或想分享反馈？发送邮件给我们，我们会尽快回复。",
+      responseTime: "典型响应时间：48小时以内。",
+      linkLabel: CONTACT_EMAIL,
+    },
+    sections: [
+      {
+        heading: "常见问题",
+        faq: [
+          {
+            q: "如何恢复「移除广告」购买？",
+            a: `<p>打开应用，点击主屏幕上的设置图标进入<strong>关于</strong>页面，点击<strong>恢复购买</strong>。系统将通过 App Store 或 Google Play 验证您的购买，广告将自动移除。</p>
+                <p>请确保您登录的 Apple ID（iOS）或 Google 账户（Android）与最初购买时使用的相同。</p>`
+          },
+          {
+            q: "通知不工作——我该怎么办？",
+            a: `<p>请检查以下内容：</p>
+                <ul>
+                  <li>前往设备的<strong>设置 → 通知 → Lystro</strong>，确保通知已允许。</li>
+                  <li>确保设置的提醒时间在未来。</li>
+                  <li>如果您最近重新安装了应用，请打开一次以重新注册通知权限。</li>
+                </ul>`
+          },
+          {
+            q: "如何更改应用语言？",
+            a: `<p>打开<strong>设置</strong>（点击主屏幕上的齿轮图标），向下滚动至<strong>语言</strong>部分，选择您偏好的语言——应用将自动重启以应用更改。</p>
+                <p>Lystro 支持33种语言。</p>`
+          },
+          {
+            q: "我的数据存储在哪里？是否有备份？",
+            a: `<p>您的所有购物清单、条目、备注和照片均存储在设备本地。数据永远不会发送到服务器——没有账户，没有云同步。</p>
+                <p>您的数据会包含在设备的标准 iCloud 或 iTunes 备份中（如果已启用）。在 Android 上，数据包含在您的 Google 备份中（如果已启用）。从备份恢复设备时，Lystro 数据也会随之恢复。</p>`
+          },
+          {
+            q: "如何删除所有数据？",
+            a: `<p>您可以在应用内删除单个清单或条目。要完全删除所有数据，请从设备卸载 Lystro——这将永久删除所有本地存储的清单、条目、照片和设置。</p>`
+          },
+          {
+            q: "应用崩溃或行为异常——我该怎么办？",
+            a: `<p>请尝试以下步骤：</p>
+                <ul>
+                  <li>强制关闭应用并重新打开。</li>
+                  <li>确保您使用的是 App Store（iOS）或 Google Play（Android）中最新版本的 Lystro。</li>
+                  <li>重启设备。</li>
+                </ul>
+                <p>如果问题持续，请<a href="mailto:${CONTACT_EMAIL}">联系我们</a>，描述发生了什么以及您使用的设备型号和 系统版本，我们会尽快调查。</p>`
+          },
+        ]
+      },
+      {
+        heading: "隐私",
+        content: `<p>Lystro 的设计以您的隐私为优先。您的清单和照片永远不会离开设备。详情请参阅我们的<a href="${PRIVACY_POLICY_URL}">隐私政策</a>。</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. 保留所有权利。`
+  },
+
+  ja: {
+    langLabel: "言語",
+    appName: "Lystro - 簡単買い物リスト",
+    title: "サポート",
+    subtitle: "Lystro - 簡単買い物リスト",
+    intro: "お気軽にご相談ください。よくある質問をご確認いただくか、直接お問い合わせください。通常48時間以内に返信いたします。",
+    contact: {
+      icon: "✉️",
+      heading: "お問い合わせ",
+      body: "ご不明な点、バグの報告、フィードバックなどがあればメールでご連絡ください。できる限り早く対応いたします。",
+      responseTime: "通常の返信時間：48時間以内",
+      linkLabel: CONTACT_EMAIL,
+    },
+    sections: [
+      {
+        heading: "よくある質問",
+        faq: [
+          {
+            q: "「広告を削除」の購入を復元するには？",
+            a: `<p>アプリを開いてメイン画面の設定アイコンから<strong>情報</strong>に移動します。<strong>購入を復元</strong>をタップしてください。App StoreまたはGoogle Playで購入が確認され、広告が自動的に削除されます。</p>
+                <p>元の購入に使用したApple ID（iOS）またはGoogleアカウント（Android）と同じアカウントでサインインしていることを確認してください。</p>`
+          },
+          {
+            q: "通知が届かない場合は？",
+            a: `<p>以下を確認してください：</p>
+                <ul>
+                  <li>デバイスの<strong>設定 → 通知 → Lystro</strong>を開き、通知が許可されていることを確認する。</li>
+                  <li>設定したリマインダーの時刻が未来であることを確認する。</li>
+                  <li>最近アプリを再インストールした場合は、通知権限を再登録するために一度アプリを開く。</li>
+                </ul>`
+          },
+          {
+            q: "アプリの言語を変更するには？",
+            a: `<p><strong>設定</strong>（メイン画面の歯車アイコンをタップ）を開き、<strong>言語</strong>セクションまでスクロールします。希望の言語を選択すると、アプリが自動的に再起動して変更が適用されます。</p>
+                <p>Lystroは33言語に対応しています。</p>`
+          },
+          {
+            q: "データはどこに保存されていますか？バックアップはありますか？",
+            a: `<p>すべての買い物リスト、アイテム、メモ、写真はデバイスにローカル保存されます。データはサーバーに送信されることはありません — アカウントもクラウド同期もありません。</p>
+                <p>データはデバイスの標準iCloudまたはiTunesバックアップに含まれます（有効にしている場合）。AndroidではGoogleバックアップに含まれます（有効にしている場合）。バックアップからデバイスを復元すると、Lystroのデータも一緒に復元されます。</p>`
+          },
+          {
+            q: "すべてのデータを削除するには？",
+            a: `<p>アプリ内から個別のリストやアイテムを削除できます。すべてのデータを完全に削除するには、デバイスからLystroをアンインストールしてください — これにより、ローカルに保存されているすべてのリスト、アイテム、写真、設定が完全に削除されます。</p>`
+          },
+          {
+            q: "アプリがクラッシュしたり予期しない動作をする場合は？",
+            a: `<p>以下の手順をお試しください：</p>
+                <ul>
+                  <li>アプリを強制終了して再度開く。</li>
+                  <li>App Store（iOS）またはGoogle Play（Android）でLystroの最新バージョンを使用していることを確認する。</li>
+                  <li>デバイスを再起動する。</li>
+                </ul>
+                <p>問題が解決しない場合は、<a href="mailto:${CONTACT_EMAIL}">お問い合わせください</a>。発生した状況、使用デバイス、OSバージョンをご記載ください。できる限り早く調査いたします。</p>`
+          },
+        ]
+      },
+      {
+        heading: "プライバシー",
+        content: `<p>Lystroはプライバシーを重視して設計されています。リストや写真がデバイスの外に出ることはありません。詳細は<a href="${PRIVACY_POLICY_URL}">プライバシーポリシー</a>をご確認ください。</p>`
+      }
+    ],
+    footer: `© ${CURRENT_YEAR} Lystro. All rights reserved.`
+  },
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+// LANGUAGE NAMES
+// Add the native name for each language code you add to translations above.
+// ─────────────────────────────────────────────────────────────────────────────
+const langNames = {
+  cs: "Čeština",
+  da: "Dansk",
+  de: "Deutsch",
+  el: "Ελληνικά",
+  en: "English",
+  es: "Español",
+  fr: "Français",
+  hi: "हिन्दी",
+  hr: "Hrvatski",
+  hu: "Magyar",
+  id: "Indonesia",
+  it: "Italiano",
+  ja: "日本語",
+  ko: "한국어",
+  nl: "Nederlands",
+  no: "Norsk",
+  pl: "Polski",
+  pt: "Português",
+  ro: "Română",
+  ru: "Русский",
+  sk: "Slovenčina",
+  fi: "Suomi",
+  sv: "Svenska",
+  th: "ภาษาไทย",
+  tr: "Türkçe",
+  uk: "Українська",
+  vi: "Tiếng Việt",
+  zh: "中文",
+};
+
+// ─────────────────────────────────────────────────────────────────────────────
+// FAQ ACCORDION
+// ─────────────────────────────────────────────────────────────────────────────
+function buildFaq(items) {
+  return `<div class="faq-list">${items.map((item, i) => `
+    <div class="faq-item" id="faq-${i}">
+      <button class="faq-question" onclick="toggleFaq(${i})" aria-expanded="false">
+        <span>${item.q}</span>
+        <svg class="faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="5 8 10 13 15 8"/>
+        </svg>
+      </button>
+      <div class="faq-answer">${item.a}</div>
+    </div>
+  `).join("")}</div>`;
+}
+
+function toggleFaq(i) {
+  const item = document.getElementById(`faq-${i}`);
+  const isOpen = item.classList.contains("open");
+  item.classList.toggle("open", !isOpen);
+  item.querySelector(".faq-question").setAttribute("aria-expanded", String(!isOpen));
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// RENDERER
+// ─────────────────────────────────────────────────────────────────────────────
+function getInitialLang() {
+  const param = new URLSearchParams(window.location.search).get("lang");
+  if (param && translations[param]) return param;
+
+  const browser = (navigator.language || "").split("-")[0].toLowerCase();
+  if (translations[browser]) return browser;
+
+  return "en";
+}
+
+function setLang(lang) {
+  const url = new URL(window.location);
+  url.searchParams.set("lang", lang);
+  window.history.replaceState({}, "", url);
+  render(lang);
+}
+
+function render(lang) {
+  const t = translations[lang];
+  if (!t) return;
+
+  document.documentElement.lang = lang;
+  document.title = `${t.title} – Lystro`;
+
+  // Language bar
+  document.getElementById("lang-label").textContent = t.langLabel;
+
+  // Header
+  document.getElementById("app-name").textContent = t.appName;
+  document.getElementById("page-title").textContent = t.title;
+  document.getElementById("page-subtitle").textContent = t.subtitle;
+
+  // Intro
+  document.getElementById("page-intro").textContent = t.intro;
+
+  // Contact card
+  document.getElementById("contact-card-container").innerHTML = `
+    <div class="contact-card">
+      <div class="contact-icon">${t.contact.icon}</div>
+      <div class="contact-body">
+        <h2>${t.contact.heading}</h2>
+        <p>${t.contact.body}</p>
+        <p>${t.contact.responseTime}</p>
+        <a class="contact-link" href="mailto:${CONTACT_EMAIL}">${t.contact.linkLabel}</a>
+      </div>
+    </div>
+  `;
+
+  // Sections
+  const sectionsEl = document.getElementById("sections");
+  sectionsEl.innerHTML = t.sections.map(s => {
+    const body = s.faq
+      ? buildFaq(s.faq)
+      : s.content;
+    return `<section><h2>${s.heading}</h2>${body}</section>`;
+  }).join("");
+
+  // Footer
+  document.getElementById("page-footer").innerHTML = `<p>${t.footer}</p>`;
+}
+
+function initSelect(currentLang) {
+  const select = document.getElementById("lang-select");
+  select.innerHTML = Object.entries(langNames).map(([code, name]) =>
+    `<option value="${code}"${code === currentLang ? " selected" : ""}>${name}</option>`
+  ).join("");
+  select.addEventListener("change", e => setLang(e.target.value));
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────────────────────────────────────
+const initialLang = getInitialLang();
+initSelect(initialLang);
+render(initialLang);
+</script>
+</body>
+</html>
